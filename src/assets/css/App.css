@@ -1,0 +1,22 @@
+/*全局样式*/
+body{
+  /*无边框*/
+  padding: 0;
+ margin: 0;
+}
+
+/*悬浮鼠标指针放在一个元素边界范围内时所用的光标形状*/
+/*悬浮手指形状*/
+.Finger {
+  cursor: pointer;
+}
+
+body {
+    background-image: url(../../assets/img/Home/bg.png);
+
+}
+
+/* el */
+.el-header {
+    background-color: aquamarine;
+}
