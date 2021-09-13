@@ -22,14 +22,15 @@
         <a href="/register" class="link_class">注册</a>    <a href="/register" class="link_class">忘记密码</a>
       </div>
     </div >
-    <!--  微信登陆-->
-    <div id="wxlogin">
-    </div>
-    </div>
-    <el-form-item>
-      <el-button type="primary" native-type="submit">立即创建</el-button>
-      <el-button @click="enloginCancel">取消</el-button>
-    </el-form-item>
+<!--    &lt;!&ndash;  微信登陆&ndash;&gt;-->
+<!--    <div id="wxlogin">-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <el-form-item>-->
+<!--      <el-button type="primary" native-type="submit">立即创建</el-button>-->
+<!--      <el-button @click="enloginCancel">取消</el-button>-->
+<!--    </el-form-item>-->
+  </div>
   </div>
 </template>
 
@@ -48,34 +49,38 @@ export default {
     }
   },
   mounted() {
-    //微信登陆
-    this.wechatHandleClick();
-    document.getElementsByTagName("iframe")[0].height = "320";
-    document.getElementsByTagName("iframe")[0].style.marginLeft = "30px";
+
+    // //微信登陆
+    // this.wechatHandleClick();
+    // document.getElementsByTagName("iframe")[0].height = "320";
+    // document.getElementsByTagName("iframe")[0].style.marginLeft = "30px";
+    // enloginCancel:{
+     //   console.log('取消')
+    // }
   },
   //计算属性
   methods: {
     //微信登陆
-    wechatHandleClick() {
-      let ba64Css =
-          "css代码base64编码";// 微信需要https的样式路径，这里将样式内容加密base64，可以避免使用https，如果你的网站是https的可以直接使用安官方文档使用css文件路径
-      const appid = 'wx0a7924b7c9a2e3b6';
-      const redirect_uri = encodeURIComponent("www.cokbbs.games/");
-      let obj = new WxLogin({
-        id: "wxlogin", //div的id
-        appid: appid,
-        scope: "snsapi_login",//固定内容
-        redirect_uri: redirect_uri, //回调地址
-        // href: "http://*/static/UserCss/WeChart.css" //自定义样式链接，第三方可根据实际需求覆盖默认样式。
-        href: "data:text/css;base64," + ba64Css
-        // state: "", //参数，可带可不带
-        // style: "", //样式 提供"black"、"white"可选，默认为黑色文字描述
-      });
-    }
+    // wechatHandleClick(){
+      // let ba64Css =
+      //     "css代码base64编码";// 微信需要https的样式路径，这里将样式内容加密base64，可以避免使用https，如果你的网站是https的可以直接使用安官方文档使用css文件路径
+      // const appid = 'wx0a7924b7c9a2e3b6';
+      // const redirect_uri = encodeURIComponent("www.cokbbs.games/");
+      // let obj = new WxLogin({
+      //   id: "wxlogin", //div的id
+      //   appid: appid,
+      //   scope: "snsapi_login",//固定内容
+      //   redirect_uri: redirect_uri, //回调地址
+      //   // href: "http://*/static/UserCss/WeChart.css" //自定义样式链接，第三方可根据实际需求覆盖默认样式。
+      //   href: "data:text/css;base64," + ba64Css
+      //   // state: "", //参数，可带可不带
+      //   // style: "", //样式 提供"black"、"white"可选，默认为黑色文字描述
+      // });
+  //   }
   }
+
+
 };
-
-
 </script>
 
 <style scoped>

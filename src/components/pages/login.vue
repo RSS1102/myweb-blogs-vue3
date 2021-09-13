@@ -37,7 +37,7 @@ export default {
   methods: {
     go_work_index() {
       console.log("go/index")
-      this.$router.push('/slideVerify')
+      this.$router.push('/register')
     }
 
   }
