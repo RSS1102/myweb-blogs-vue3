@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       Article: {
-        // title: '',
-        //  body:'',
+         title: '',
+         body:'',
       }
     }
   },
@@ -52,8 +52,6 @@ export default {
       console.log(this.Article);
     },
     articleCancel(){
-      this.form.title='';
-      this.form.page='';
       console.log(this.Article);
     }
   },
