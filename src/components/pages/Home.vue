@@ -45,14 +45,16 @@ export default {
     }
   },
   methods: {
+    //录入文章
     saveArticle() {
       this.$http.post('articles',this.Article).then(res=>{
         console.log(res.data);
       })
       console.log(this.Article);
     },
+    //取消
     articleCancel(){
-      console.log(this.Article);
+
     }
   },
 }

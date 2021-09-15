@@ -67,10 +67,7 @@ export default {
       } else {
         callback(new Error('请输入正确邮箱'))
       }
-
     };
-
-
     return {
       mos:false,
       reAccount: {
