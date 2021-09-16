@@ -1,7 +1,7 @@
 <template>
   <mainslot>
     <template v-slot:topName>
-      张三
+      {{ user.username}}
     </template>
     <template v-slot:topSlot>
       <router-link to="/">个人信息</router-link>
@@ -28,14 +28,13 @@
 </template>
 
 <script>
-import mainslot from "@/components/repeat/Mainslot";
+import Mainslot from "../repeat/Mainslot";
+import {mapState} from 'vuex';
 export default {
-
   name: "name",
   components: {
-    mainslot,
+    Mainslot,
   },
-
   data() {
     return {
       Article: {
@@ -43,6 +42,9 @@ export default {
          body:'',
       }
     }
+  },
+  computed:{
+  ...mapState(["user"])
   },
   methods: {
     //录入文章

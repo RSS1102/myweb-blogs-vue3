@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Sidentify from "@/components/repeat/Sidentify";
+import Sidentify from "../repeat/Sidentify";
 
 export default {
   name: "Register",
@@ -94,7 +94,7 @@ export default {
         username: [
           {required: true, message: "请输入姓名", trigger: 'blur'},
           {min: 4, max: 12, message: "请输入4-8个字符", trigger: "change"},
-          {pattern: /^[\u4e00-\u9fa5_a-zA-Z0-9.·-]+$/, message: '姓名不支持特殊字符', trigger: 'blur'}
+          {pattern: /^[\u4e00-\u9fa5_a-zA-Z 0-9.·-]+$/, message: '姓名不支持特殊字符', trigger: 'blur'}
         ],
         userEmail: [
           {required: true, message: "请输入邮箱", trigger: 'blur'},
@@ -153,14 +153,27 @@ export default {
     },
     //上传 储存用户注册
    saveReaccount() {
-     this.$http.post('reaccounts', this.Account).then(res => {
-       console.log('注册成功', res.data)
-      // 消息提示
-      this.$message({
-        message:"注册成功。",
-        type:"success",
-      })
-       this.$router.push('/login')
+      console.log(this.Account)
+     this.$http.post('accounts', this.Account).then(res => {
+       console.log('注册', res.data)
+       if(res.data=true){
+         // 消息提示
+         this.$message({
+           duration: 1000,
+           message:"注册成功。",
+           type:"success",
+         })
+         this.$router.push('/login')
+       }else {
+         // 消息提示
+         this.$message({
+           duration: 1000,
+           message:"注册失败，请重试...",
+           type:"error",
+         })
+
+       }
+
      })
    },
 

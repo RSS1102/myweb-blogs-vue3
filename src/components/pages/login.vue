@@ -10,7 +10,6 @@
     </template>
 
     <template v-slot:mainSlot>
-    <button @click="go_work_index">跳转页面</button>
     <div class="Home_Box">
       <logintable class="Home_Box_table"></logintable>
       <loginlogin class="Home_Box_login"></loginlogin>
@@ -23,10 +22,7 @@
 import mainsolt from "@/components/repeat/Mainslot";
 import logintable from '../login/Login_table';
 import loginlogin from '../login/Login_login';
-
-
 export default {
-
   name: "login",
   components: {
     mainsolt,
@@ -35,10 +31,10 @@ export default {
   },
 
   methods: {
-    go_work_index() {
-      console.log("go/index")
-      this.$router.push('/index')
-    }
+    // go_work_index() {
+    //   console.log("go/index")
+    //   this.$router.push('/index')
+    // }
 
   }
 }

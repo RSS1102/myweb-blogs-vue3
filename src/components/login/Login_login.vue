@@ -46,7 +46,7 @@ export default {
       }
     }
   },
-  //计算属性
+
   mounted() {
     //微信登陆
 
@@ -56,6 +56,24 @@ export default {
       console.log('enLogin登陆')
       this.$http.post('enlogin',this.enlogin).then(res=>{
         console.log(res.data)
+        if(res.data.length){
+          this.$store.state.user.username=res.data
+          this.$router.push('/index')
+          // 成功消息提示
+          this.$message({
+            duration: 1000,
+            message:"恭喜你，登陆成功...",
+            type:"success",
+          })
+        }else {
+          // 失败消息提示
+          console.log('登陆失败')
+          this.$message({
+            duration: 1000,
+            message:"抱歉，登陆失败，请重试...",
+            type:'error',
+          })
+        }
       })
     }
 
