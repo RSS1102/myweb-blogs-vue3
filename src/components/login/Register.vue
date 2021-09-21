@@ -1,5 +1,5 @@
 <template>
-  <div class="page_class">
+  <div class="page_class" >
     <div class="box_class">
       <div class="title_class">
         <h2>账号注册 </h2>
@@ -153,9 +153,19 @@ export default {
     },
     //上传 储存用户注册
    saveReaccount() {
+     //Loading遮罩
+     const loading = this.$loading({
+       lock: true,
+       text: '注册中...',
+       spinner: 'el-icon-loading',
+       background: 'rgba(0, 0, 0, 0.7)',
+     })
+
+
       console.log(this.Account)
      this.$http.post('accounts', this.Account).then(res => {
        console.log('注册', res.data)
+       setTimeout(() => {
        if(res.data=true){
          // 消息提示
          this.$message({
@@ -163,20 +173,24 @@ export default {
            message:"注册成功。",
            type:"success",
          })
-         this.$router.push('/login')
+         //取消加载
+           loading.close()
+           //跳转登陆
+           this.$router.push('/login')
        }else {
          // 消息提示
          this.$message({
-           duration: 1000,
+           duration: 2000,
            message:"注册失败，请重试...",
            type:"error",
          })
+         //取消加载
+           loading.close()
 
        }
-
+     }, 2000)
      })
    },
-
 
     // 提交表单
     //validate验证，任一表单项被校验后触发
@@ -184,6 +198,7 @@ export default {
       console.log('点击按钮')
       this.$refs[Article].validate((valid) => {
         if (valid) {
+          //规则正确
           this.submit();
         } else {
           console.log('error submit!!')

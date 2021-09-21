@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from "@/components/pages/login.vue"
-import home from "@/components/pages/Home.vue"
+import home from "@/components/pages/Article.vue"
 import contact from "@/components/repeat/Contact";
 import Register from "@/components/login/Register";
 
 
 Vue.use(VueRouter)
+
+//路由守卫
 
 const routes = [
     //redirect这是一个默认路由
