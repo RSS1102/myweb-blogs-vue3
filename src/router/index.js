@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import login from "@/components/pages/login.vue"
-import home from "@/components/pages/Article.vue"
-import contact from "@/components/repeat/Contact";
-import Register from "@/components/login/Register";
+import Login from "../components/pages/Login";
+import Article from "../components/business/CustomArticle";
+import Register from "../components/login/Register";
 
 
 Vue.use(VueRouter)
@@ -12,11 +11,10 @@ Vue.use(VueRouter)
 
 const routes = [
     //redirect这是一个默认路由
-    {path: '/', redirect: '/login'  },
-    {path: '/login', component: login,meta: {title: '首页',}},
-    {path: '/index', component: home , meta: {title: '阿力的小破站',}},
-    {path: '/contact', component: contact, meta: {title: '联系方式',}},
-    {path: '/register', component: Register, meta: {title: '账号注册',}},
+    { path: '/', redirect: '/login' },
+    { path: '/login', component: Login, meta: { title: '首页', } },
+    { path: '/index', component: Article, meta: { title: '阿力的小破站', } },
+    { path: '/register', component: Register, meta: { title: '账号注册', } },
 ]
 
 const router = new VueRouter({

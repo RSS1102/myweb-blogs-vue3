@@ -1,40 +1,18 @@
-<!--网站底部ICP-->
 <template>
-  <div id="topBanner">
-    <!--  返回首页-->
-    <div class="topLeft" title="主页">
-      <img src="../../assets/img/logo.png" alt="返回首页" @click="backHome" class="Finger">
-    </div>
-    <!--  问题反馈-->
-    <div class="topRight">
-      <div class="dropdown">
-        <span class="dropSpan">
-        <slot name="topName"></slot>
-        </span>
-        <!--下拉框-->
-        <div class="dropdown-content">
-          <slot name="topSlot"></slot>
-        </div>
-      </div>
-    </div>
+  <div class="dropdown">
+    <span class="dropSpan">
+      <slot name="topName"></slot>
+    </span>
+    <!--下拉框-->
+    <div class="dropdown-content"></div>
   </div>
 </template>
-
-
 <script>
 export default {
-  name: "Topbanner",
-  methods: {
-    //返回首页
-    backHome() {
-      console.log("返回首页")
-      this.$router.replace('/login')
-    }
-  }
-}
+  name: "dropdownbox",
+};
 </script>
-
-<style>
+<style >
 /*整个顶部的高度，颜色*/
 #topBanner {
   height: 80px;
@@ -51,10 +29,9 @@ export default {
   width: 60px;
   margin: 10px 0 0 100px;
   border-radius: 50%;
-
 }
 
-/*反馈问题模块*/
+/*下拉*/
 .topRight {
   background-color: #84a3e3;
   margin-top: 30px;
@@ -74,7 +51,6 @@ export default {
   border: none;
   /*悬浮手指形状*/
   cursor: pointer;
-
 }
 
 /* 容器 <div> - 需要放置下拉内容 */
