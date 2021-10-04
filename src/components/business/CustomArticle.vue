@@ -6,14 +6,17 @@
       label-width="80px"
       @submit.native.prevent="saveArticle"
       :rules="rules"
+      class="form-article"
     >
       <el-form-item label="文章标题" prop="title">
         <el-input v-model="Article.title"></el-input>
       </el-form-item>
       <el-form-item label="文章内容" prop="body">
-        <el-input v-model="Article.body"></el-input>
+        <el-input class="area-article"  v-model="Article.body"></el-input>
       </el-form-item>
-      <div v-if="Calmsg" class="CalMsg">抱歉目前还没有取消功能呢</div>
+
+
+      <div v-if="Calmsg" class="cal-msg ">抱歉目前还没有取消功能呢</div>
       <el-form-item>
         <el-button type="primary" @click="saveArticle_btn('form')"
           >立即发布</el-button
@@ -27,7 +30,7 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "Article",
+  name: "CustArticle",
   components: {},
   data() {
     return {
@@ -43,19 +46,9 @@ export default {
     };
   },
   computed: {
-    ...mapState(["user"]),
+    // ...mapState(["user"]),
   },
-  mounted() {
-    if (this.$store.state.user.username == "") {
-      this.$router.push("/login");
-      // 消息提示
-      this.$message({
-        duration: 2000,
-        message: "您还没有登陆，请登陆后重试...",
-        type: "warning",
-      });
-    }
-  },
+
   methods: {
     //录入文章
     saveArticle_btn(Article) {
@@ -68,10 +61,10 @@ export default {
       });
     },
     saveArticle() {
-      this.$http.post("articles", this.Article).then((res) => {
+      console.log(this.Article);
+      this.$http.post("article", this.Article).then((res) => {
         console.log(res.data);
       });
-      console.log(this.Article);
     },
     //取消
     articleCancel() {
@@ -85,10 +78,17 @@ export default {
 </script>
 
 <style scoped>
-.CalMsg {
+.cal-msg {
   color: red;
   font-size: 16px;
   margin-left: 30px;
   margin-bottom: 10px;
+}
+.form-article{
+  width: 450px;
+  height: 450px;
+}
+.area-article{
+
 }
 </style>

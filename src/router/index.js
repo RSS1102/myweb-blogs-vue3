@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from "../components/pages/Login";
-import Article from "../components/business/CustomArticle";
+import index from "../components/pages/index";
 import Register from "../components/login/Register";
 
 
@@ -13,7 +13,7 @@ const routes = [
     //redirect这是一个默认路由
     { path: '/', redirect: '/login' },
     { path: '/login', component: Login, meta: { title: '首页', } },
-    { path: '/index', component: Article, meta: { title: '阿力的小破站', } },
+    { path: '/index', component: index, meta: { title: '阿力的小破站', } },
     { path: '/register', component: Register, meta: { title: '账号注册', } },
 ]
 

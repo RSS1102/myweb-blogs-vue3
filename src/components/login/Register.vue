@@ -185,16 +185,14 @@ export default {
       console.log(this.Account);
       this.$http.post("accounts", this.Account).then((res) => {
         console.log("注册", res.data);
-        setTimeout(() => {
+        setTimeout(()=>{
           if ((res.data = true)) {
             // 消息提示
             this.$message({
-              duration: 1000,
+              duration: 2000,
               message: "注册成功。",
               type: "success",
             });
-            //取消加载
-            loading.close();
             //跳转登陆
             this.$router.push("/login");
           } else {
@@ -204,10 +202,10 @@ export default {
               message: "注册失败，请重试...",
               type: "error",
             });
-            //取消加载
-            loading.close();
           }
-        }, 2000);
+          //取消加载
+          loading.close();
+        },1000)
       });
     },
 

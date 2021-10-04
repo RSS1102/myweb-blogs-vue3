@@ -122,7 +122,7 @@ export default {
       console.log("enLogin登陆");
       this.$http.post("enlogin", this.enlogin).then((res) => {
         console.log("登陆返回信息", res.data);
-        if (res.data) {
+        if (res.data!="") {
           //不能直接访问 vuex state   this.$store.state.user.username=res.data
           // 绑定用户信息
           this.setUser(res.data);

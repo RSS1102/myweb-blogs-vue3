@@ -15,11 +15,6 @@
   </div>
 </template>
 
-
-</mainbanner>
-  
-</template>
-
 <script>
 import mainbanner from "../banners/MainBanner.vue";
 import logintable from "../login/LoginTable";
