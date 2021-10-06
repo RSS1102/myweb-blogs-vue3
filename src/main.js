@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 //引入行为滑块
-
+import store from "./store";
 
 //路由
 import router from './router'
@@ -18,5 +18,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store
 }).$mount('#app')
