@@ -2,29 +2,28 @@
 <template>
   <div id="topBanner">
     <!--  返回首页-->
-    <div class="topLeft" title="主页">
+
       <img
         src="../../assets/img/logo.png"
         alt="返回首页"
         @click="backHome"
-        class="Finger"
+        class="back-home"
       />
-    </div>
     <!-- 账号-->
-    <div class="topRight">
- <slot name="topName"></slot></template>
-  <slot name="topSlot"></slot></template>
+    <div class="user-slot">
+ <slot name="topName"></slot>
+  <slot name="dropDown"></slot>
     </div>
   </div>
 </template>
 
 
 <script>
-// import dropdownbox from "../repeat/DropdownBox.vue";
+
 export default {
   name: "Topbanner",
   components: {
-    // dropdownbox,
+
   },
   methods: {
     //返回首页
@@ -36,8 +35,23 @@ export default {
 };
 </script>
 <style>
-/* el */
-.el-header {
-  background-color: rgb(72, 218, 169);
+#topBanner{
+  height: 80px;
+  background-color: #7196dc;
+  display: flex;
+  position:relative
+}
+
+.back-home{
+  border-radius:5%;
+  width: 45px;
+  height:45px;
+  cursor: pointer;
+  margin: 20px 0 0 200px;
+}
+.user-slot{
+  margin: 20px 250px 0 0 ;
+  position:absolute;
+  right:0
 }
 </style>

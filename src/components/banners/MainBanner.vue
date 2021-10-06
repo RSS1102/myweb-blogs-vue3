@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-container>
-      <!--  height="85px" -->
-      <el-header>
-        <slot name="topslot"></slot>
+      <el-header >
+        <slot name="topslot">
+        </slot>
       </el-header>
       <el-main>
         <slot name="mainslot"></slot>
@@ -24,4 +24,7 @@ export default {
 </script>
 
 <style scoped>
+.el-header {
+  padding: 0;
+}
 </style>

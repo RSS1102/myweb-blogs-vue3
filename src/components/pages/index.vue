@@ -2,10 +2,23 @@
   <div>
     <mainbanner>
       <template v-slot:topslot>
-      <topbanner></topbanner>
+        <topbanner>
+          <template v-slot:dropDown>
+            <dropdown></dropdown>
+          </template>
+        </topbanner>
       </template>
       <template v-slot:mainslot>
-        <CustArticle  ></CustArticle  >
+        <div class="article-box">
+          <div class="article-release">
+            <CustArticle></CustArticle>
+            <!--            <div v-for="item in articleList">-->
+            <!--              {{}}-->
+            <!--              {{}}-->
+            <!--              {{}}-->
+            <!--            </div>-->
+          </div>
+        </div>
       </template>
       <template v-slot:footslot>
         <footbanner></footbanner>
@@ -15,32 +28,46 @@
 </template>
 <script>
 import mainbanner from "../banners/MainBanner.vue";
-import CustArticle  from "../business/CustomArticle.vue";
+import CustArticle from "../business/CustomArticle.vue";
 import footbanner from "../banners/FootBanner.vue";
-import topbanner from "../banners/TopBanner"
+import topbanner from "../banners/TopBanner";
+import dropdown from "../repeat/DropdownBox"
+
 export default {
   name: "login",
   components: {
     topbanner,
     mainbanner,
-    CustArticle ,
+    CustArticle,
     footbanner,
+    dropdown,
   },
-  mounted() {
-    if (this.$store.state.user.username == "") {
-      this.$router.push("/login");
-      // 消息提示
-      this.$message({
-        duration: 2000,
-        message: "您还没有登陆，请登陆后重试...",
-        type: "warning",
-      });
+  data() {
+    return {
+      articleList: []
     }
   },
+  
+  methods: {
 
-  methods: {},
+
+
+  },
+
 };
 </script>
 <style>
+.article-box {
+  overflow-y: hidden;
+  position: relative;
+  width: 100%;
+  height: 400px;
 
+}
+
+.article-release {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 </style>

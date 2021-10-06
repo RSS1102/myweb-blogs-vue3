@@ -12,14 +12,14 @@
         <el-form
           ref="form"
           :model="enlogin"
-          label-width="60px"
+          label-width="80px"
           @submit.native.prevent="enLogin"
           :rules="rules"
         >
-          <el-form-item label="账户" class="item_class" prop="username">
+          <el-form-item label="用户名" class="item_class" prop="username">
             <el-input v-model="enlogin.username"></el-input>
           </el-form-item>
-          <el-form-item label="密码" class="item_class" prop="userPwd">
+          <el-form-item label="密码 " class="item_class" prop="userPwd">
             <el-input v-model="enlogin.userPwd"></el-input>
           </el-form-item>
           <el-form-item>
@@ -151,8 +151,8 @@ export default {
 <style scoped>
 /*整个登陆页面*/
 #login {
-  width: 300px;
-  height: 290px;
+  width: 280px;
+  height: 280px;
   background: #9faec5;
 }
 
@@ -167,6 +167,7 @@ export default {
   background: rgba(248, 105, 105, 0.04);
   display: flex;
   text-align: center;
+  line-height:35px;
 }
 
 .login_Method div {
@@ -203,7 +204,7 @@ export default {
 
 /*自定义登陆*/
 #enlogin {
-  width: 230px;
+  width: 240px;
   height: 300px;
   font-weight: bold;
   /*background: #305598;*/

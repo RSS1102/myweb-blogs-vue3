@@ -1,11 +1,13 @@
 <template>
   <div>
     <mainbanner>
-      <template v-slot:topslot> </template>
+      <template v-slot:topslot></template>
       <template v-slot:mainslot>
-        <div class="Home_Box">
-          <logintable class="Home_Box_table"></logintable>
-          <loginlogin class="Home_Box_login"></loginlogin>
+        <div class="box">
+          <div class="home-box">
+            <logintable class="home-box-margin"></logintable>
+            <loginlogin ></loginlogin>
+          </div>
         </div>
       </template>
       <template v-slot:footslot>
@@ -20,6 +22,7 @@ import mainbanner from "../banners/MainBanner.vue";
 import logintable from "../login/LoginTable";
 import loginlogin from "../login/LoginLogin";
 import footbanner from "../banners/FootBanner.vue";
+
 export default {
   name: "login",
   components: {
@@ -34,15 +37,21 @@ export default {
 </script>
 
 <style scoped>
-.Home_Box {
+.box {
+  /* 利用flex布局，配合margin：auto使用，实现水平垂直居中。*/
   display: flex;
-  margin: 10% auto;
-  width: 1080px;
+  height: 650px;
+
 }
-.Home_Box_table {
-  margin: 0 250px 0 0;
+
+.home-box {
+  margin: auto;
+  /*两个box flex*/
+  display: flex;
 }
-.Home_Box_login {
-  margin: 40px 0 0 180px;
+
+.home-box-margin {
+  margin-right:400px;
 }
+
 </style>
