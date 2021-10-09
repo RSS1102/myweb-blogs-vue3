@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import homeLoading  from "../components/pages/HomeLoading";
 import Login from "../components/pages/Login";
 import index from "../components/pages/index";
 import Register from "../components/login/Register";
@@ -10,7 +11,8 @@ Vue.use(VueRouter)
 
 const routes = [
     //redirect这是一个默认路由
-    {path: '/', redirect: '/login',},
+    {path: '/', redirect: '/welcome',},
+    {path: '/welcome',name:'homeLoading', component: homeLoading , meta: {title: '欢迎您的到来',}},
     {path: '/login',name:'login', component: Login, meta: {title: '首页',}},
     {path: '/index', name:'index', component: index, meta: {title: '阿力的小破站',}},
     {path: '/register',name:'register', component: Register, meta: {title: '账号注册',}},
