@@ -21,11 +21,12 @@ export default {
 
   methods: {},
 };
-</script>
+</script>background
 
 <style scoped>
 .main-class{
-  background-image: url(../../assets/img/Home/bg.png);
+
+
 }
 .el-header {
   padding: 0;

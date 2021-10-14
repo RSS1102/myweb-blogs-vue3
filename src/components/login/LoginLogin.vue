@@ -5,7 +5,6 @@
       <div v-bind:class="loginMethod_div1" @click="loginMethod_1">账号登陆</div>
       <div v-bind:class="loginMethod_div2" @click="loginMethod_2">微信登陆</div>
     </div>
-
     <!--注册账号-->
     <div id="login_Box">
       <div id="enlogin" v-bind:class="enlogin_display">
@@ -15,11 +14,12 @@
           label-width="80px"
           @submit.native.prevent="enLogin"
           :rules="rules"
+
         >
-          <el-form-item label="用户名" class="item_class" prop="username">
-            <el-input v-model="enlogin.username"></el-input>
+          <el-form-item label="用户名" prop="username">
+            <el-input  v-model="enlogin.username"></el-input>
           </el-form-item>
-          <el-form-item label="密码 " class="item_class" prop="userPwd">
+          <el-form-item label="密码 "  prop="userPwd">
             <el-input v-model="enlogin.userPwd"></el-input>
           </el-form-item>
           <el-form-item>
@@ -151,7 +151,7 @@ export default {
 <style scoped>
 /*整个登陆页面*/
 #login {
-  width: 280px;
+  width: 320px;
   height: 280px;
   background: #9faec5;
 }
@@ -204,7 +204,8 @@ export default {
 
 /*自定义登陆*/
 #enlogin {
-  width: 240px;
+  border-radius:5%;
+  width: 280px;
   height: 300px;
   font-weight: bold;
   /*background: #305598;*/
@@ -213,12 +214,10 @@ export default {
 /*自定义登陆   登陆  按钮*/
 
 .login_Btn {
-  width: 145px;
+  width: 170px;
 }
 
-.item_class {
-  background: #84a3e3;
-}
+
 
 .link_class {
   position: relative;

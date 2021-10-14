@@ -29,7 +29,7 @@ const router = new VueRouter({
     base: process.env.BASE_URL,
     routes
 });
-// 全局路由守卫
+全局路由守卫
 router.beforeEach((to, from, next) => {
     const nextRoute = ['index'] // 需要登录后才能访问的页面
     let isUsername =localStorage.getItem('username')// 判断是否登录，这里使用sessionStorage进行存储登录状态

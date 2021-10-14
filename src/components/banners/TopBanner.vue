@@ -37,7 +37,7 @@ export default {
 <style>
 #topBanner{
   height: 80px;
-  background-color: #7196dc;
+  background-color: #92aeec;
   display: flex;
   position:relative
 }

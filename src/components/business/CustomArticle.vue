@@ -1,6 +1,6 @@
 <template>
   <div class="article-area">
-    <h2 class="article-title">写下您想说的话吧</h2>
+    <h1 class="article-title">写下您想说的话吧</h1>
     <el-form
         ref="form"
         :model="Article"

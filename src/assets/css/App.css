@@ -12,7 +12,7 @@ body{
 }
 
 body {
-    background-image: url(../../assets/img/Home/bg.png);
-
+    background-image: url("../../assets/img/Home/bg.png");
+    background-size:cover;
 }
 
