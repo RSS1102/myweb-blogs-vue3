@@ -5,7 +5,6 @@
       <template v-slot:mainslot>
         <div class="box">
           <div class="home-box">
-            <logintable class="home-box-margin"></logintable>
             <loginlogin ></loginlogin>
           </div>
         </div>
@@ -46,12 +45,8 @@ export default {
 
 .home-box {
   margin: auto;
-  /*两个box flex*/
-  display: flex;
+
 }
 
-.home-box-margin {
-  margin-right:400px;
-}
 
 </style>

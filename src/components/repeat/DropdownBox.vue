@@ -5,7 +5,9 @@
       </span>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item >个人中心</el-dropdown-item>
-      <el-dropdown-item >投诉反馈</el-dropdown-item>
+      <div @click="goMenu">
+      <el-dropdown-item >管理中心</el-dropdown-item>
+      </div>
       <div @click="backLogin">
       <el-dropdown-item >退出登陆</el-dropdown-item>
       </div>
@@ -22,6 +24,9 @@ export default {
   },
 
   methods:{
+    goMenu() {
+      this.$router.push('/manage-menu')
+    },
     backLogin() {
      localStorage.removeItem('username');
      this.$router.push("/login")

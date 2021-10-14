@@ -18,14 +18,13 @@ export default {
 #bottombanner {
   /*大小*/
   height: 100px;
-
+  /*文本居中*/
+  font-size: 20px;
+  line-height: 100px;
   /*下对齐  定位类型：position，*/
   position: absolute;
-  bottom: 0;
-  left: 35%;
-  /*文本居中*/
-  line-height: 100px;
-  text-align: center;
-  font-size: 20px;
+  bottom: 30px;
+  left: 50%;
+transform: translate(-50%);
 }
 </style>

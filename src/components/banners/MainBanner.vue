@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-class">
     <el-container>
       <el-header >
         <slot name="topslot">
@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style scoped>
+.main-class{
+  background-image: url(../../assets/img/Home/bg.png);
+}
 .el-header {
   padding: 0;
 }

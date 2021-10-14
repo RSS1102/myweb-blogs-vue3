@@ -12,14 +12,14 @@ Vue.use(VueRouter)
 
 const routes = [
     //redirect这是一个默认路由
-    {path: '/', redirect: '/manage-menu',},
+    {path: '/', redirect: '/welcome',},
     {path: '/welcome',name:'homeLoading', component: HomeLoading , meta: {title: '欢迎您的到来',}},
     {path: '/login',name:'login', component: Login, meta: {title: '首页',}},
     {path: '/index', name:'index', component: Index, meta: {title: '阿力的小破站',}},
     {path: '/register',name:'Register', component: Register, meta: {title: '账号注册',}},
     {path: '/manage-menu',name:'ManageMenu', component:  ManageMenu, meta: {title: '后台管理',},
         children: [
-            { path: '/from1', name: "from1", meta: { title: 'from1' }, component: () => import('../components/menufrom/From1') },
+            { path: '/from1', name: "from1", meta: { title: 'from1' }, component: () => import('../components/menuform/From1') },
         ]
     },
 ]
