@@ -1,9 +1,10 @@
 <template>
-    <HomeLoadinVue></HomeLoadinVue>
+    <login-box></login-box>
 </template>
 
+
 <script lang="ts" setup>
-import HomeLoadinVue from '../components/home/HomeLoading.vue';
+import LoginBox from '../components/home/LoginBox.vue';
 </script>
 
 <style lang="less" scoped>
