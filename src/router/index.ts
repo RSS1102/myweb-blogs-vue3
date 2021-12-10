@@ -4,6 +4,7 @@ import { createRouter, createMemoryHistory, RouteRecordRaw } from "vue-router"
 //RouteRecordRaw 定义了路由格式
 // import HomeLoadinVue from '../components/home/HomeLoading.vue';
 import Home from '../views/Home.vue'
+import Index from '../views/index.vue'
 
 const routers: RouteRecordRaw[] = [
     {
@@ -12,6 +13,9 @@ const routers: RouteRecordRaw[] = [
     }, {
         path: '/home',
         component: Home
+    }, {
+        path: '/index',
+        component: Index
     }
 
 ]

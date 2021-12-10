@@ -8,7 +8,7 @@
         <!-- 登陆 -->
         <div class="log">
             <!-- 账号登陆 -->
-            <div :class="['log-bank', logChecked ? 'disBlock' : 'disNone']">
+            <div :class="['log-bank']" v-show="logChecked">
                 <el-form :model="login.onLogin" ref="forms" label-width="60px">
                     <el-form-item
                         label="账号"
@@ -25,29 +25,32 @@
                         <el-input type="password" v-model="login.onLogin.pwd" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary">登陆</el-button>
+                        <el-button type="primary" @click="goLogin()">登陆</el-button>
                     </el-form-item>
                 </el-form>
             </div>
             <!-- 微信登陆 -->
-            <div :class="['log-wx', wxChecked ? 'disBlock' : 'disNone']" id="wxLogin">还未开通</div>
+            <div :class="['log-wx']" v-show="wxChecked" id="wxLogin">还未开通</div>
         </div>
     </div>
 </template>
 
 
-
-
 <script lang="ts" setup>
-import { reactive, watch, ref } from 'vue';
+import { reactive, watch, ref, Ref } from 'vue';
+import router from '../../router';
+// ts
 interface Login {
     onLogin: {
         account: String,
         pwd: String
     }
 }
-let logChecked: boolean = true
-let wxChecked: boolean = false
+
+// vue
+
+let logChecked: Ref<boolean> = ref(true)
+let wxChecked: Ref<boolean> = ref(false)
 const login: Login = reactive({
     onLogin: {
         account: '',
@@ -55,17 +58,26 @@ const login: Login = reactive({
     }
 });
 const logCheck: Function = () => {
-    console.log("账号", logChecked)
-    logChecked = true
-    wxChecked = false
+    logChecked.value = true
+    wxChecked.value = false
+    return {
+        logChecked,
+        wxChecked
+    }
 }
 const wxCheck: Function = () => {
-    console.log("wx", logChecked)
-    logChecked = false
-    wxChecked = true
+    logChecked.value = false
+    wxChecked.value = true
+    return {
+        logChecked,
+        wxChecked
+    }
 }
-watch(() => wxChecked, (oldVlue, newVlue) => {
-    console.log("watch", oldVlue, newVlue)
+let goLogin: Function = () => {
+
+    router.push('index')
+}
+watch(() => logChecked.value, (oldVlue, newVlue) => {
 })
 
 </script>
