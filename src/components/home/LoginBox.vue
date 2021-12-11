@@ -36,7 +36,8 @@
 </template>
 
 
-<script lang="ts" setup>
+
+<script lang="ts" setup >
 import { reactive, watch, ref, Ref } from 'vue';
 import router from '../../router';
 // ts
@@ -48,6 +49,9 @@ interface Login {
 }
 
 // vue
+//wx
+
+
 
 let logChecked: Ref<boolean> = ref(true)
 let wxChecked: Ref<boolean> = ref(false)
@@ -91,15 +95,13 @@ watch(() => logChecked.value, (oldVlue, newVlue) => {
 @hbox: 300px;
 @htags: 50px;
 
-html {
-    background: rgba(151, 151, 158, 0.1);
-}
 // 登录框
 .logn {
+    background: rgba(105, 210, 231, 0.2);
     width: @wbox;
     height: @hbox;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid rgb(148, 139, 139);

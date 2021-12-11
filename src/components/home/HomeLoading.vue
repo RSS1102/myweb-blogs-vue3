@@ -11,7 +11,7 @@
     margin: 50px auto;
 }
 .loading-title {
-    color: #69d2e7;
+    color: rgb(105, 210, 231);
     font-size: 22px;
     text-align: center;
     margin: 0;
