@@ -1,4 +1,4 @@
-import { createRouter, createMemoryHistory, RouteRecordRaw, createWebHashHistory } from "vue-router"
+import { createRouter, createMemoryHistory, RouteRecordRaw, createWebHashHistory, createWebHistory } from "vue-router"
 //createRouter 定义了存放路由的数组
 //createMemoryHistory 定义了路由模式
 //RouteRecordRaw 定义了路由格式
@@ -11,19 +11,22 @@ const routers: RouteRecordRaw[] = [
 
     {
         path: '/',
-        component: LoadingIn
+        component: Home
     },
     {
         path: '/home',
         component: Home
     }, {
-        path: '/index',
+        path: '/index/',
         component: Index
+
+
     }
 
 ]
 const router = createRouter({
-    history: createWebHashHistory(),
+    // createWebHashHistory
+    history: createWebHistory(),
     routes: routers
 })
 

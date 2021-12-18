@@ -1,100 +1,70 @@
 <template>
     <div class="logn">
-        <!-- 选择栏 -->
-        <div class="tags">
-            <div :class="{ 'tags-btn': true, 'tags-checked': logChecked }" @click="logCheck()">账号登陆</div>|
-            <div :class="{ 'tags-btn': true, 'tags-checked': wxChecked }" @click="wxCheck()">微信登陆</div>
-        </div>
         <!-- 登陆 -->
-        <div class="log">
+        <div class="login-account">
             <!-- 账号登陆 -->
-            <div :class="['log-bank']" v-show="logChecked">
-                <el-form :model="login.onLogin" ref="forms" label-width="60px">
-                    <el-form-item
-                        label="账号"
-                        prop="account"
-                        :rules="[{ required: true, message: '请输入账号' }]"
-                    >
-                        <el-input v-model="login.onLogin.account" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item
-                        label="密码"
-                        prop="pwd"
-                        :rules="[{ required: true, message: '请输入密码' }]"
-                    >
-                        <el-input type="password" v-model="login.onLogin.pwd" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="goLogin()">登陆</el-button>
-                    </el-form-item>
-                </el-form>
+
+            <el-form :model="login.onLogin" ref="forms" label-width="60px">
+                <el-form-item
+                    label="账号"
+                    prop="account"
+                    :rules="[{ required: true, message: '请输入账号' }]"
+                >
+                    <el-input v-model="login.onLogin.account" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="pwd" :rules="[{ required: true, message: '请输入密码' }]">
+                    <el-input type="password" v-model="login.onLogin.pwd" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="goLogin()">登陆</el-button>
+                </el-form-item>
+            </el-form>
+
+            <div>
+                <!-- 微信登陆 -->
+                <img src="../../assets/home/weixin-cion.jpg" class="login-wx" @click="wxCheck()" />
             </div>
-            <!-- 微信登陆 -->
-            <div :class="['log-wx']" v-show="wxChecked" id="wxLogin">还未开通</div>
         </div>
     </div>
 </template>
 
-
-
-<script lang="ts" setup >
-import { reactive, watch, ref, Ref } from 'vue';
+<script lang="ts"  setup>
+import { reactive } from 'vue';
+import axios from 'axios';
 import router from '../../router';
-// ts
+
+
+// 账号登陆
 interface Login {
     onLogin: {
         account: String,
         pwd: String
     }
 }
-
-// vue
-//wx
-
-
-
-let logChecked: Ref<boolean> = ref(true)
-let wxChecked: Ref<boolean> = ref(false)
 const login: Login = reactive({
     onLogin: {
         account: '',
         pwd: ""
     }
 });
-const logCheck: Function = () => {
-    logChecked.value = true
-    wxChecked.value = false
-    return {
-        logChecked,
-        wxChecked
-    }
-}
-const wxCheck: Function = () => {
-    logChecked.value = false
-    wxChecked.value = true
-    return {
-        logChecked,
-        wxChecked
-    }
-}
-let goLogin: Function = () => {
-
+let goLogin = (): void => {
     router.push('index')
 }
-watch(() => logChecked.value, (oldVlue, newVlue) => {
-})
-
+// 微信登陆
+const wxCheck = () => {
+    // 重定向微信扫码
+    axios.get('/api/wxlogin')
+        .then(res => {
+            let redirect_uri = res.data
+            console.log(redirect_uri)
+            window.location.href = redirect_uri
+        })
+}
 </script>
 
 <style lang="less" scoped>
-:root {
-    --disWx: none;
-    --disBlock: block;
-}
 @wbox: 300px;
 @hbox: 300px;
-@htags: 50px;
-
 // 登录框
 .logn {
     background: rgba(105, 210, 231, 0.2);
@@ -106,46 +76,19 @@ watch(() => logChecked.value, (oldVlue, newVlue) => {
     transform: translate(-50%, -50%);
     border: 1px solid rgb(148, 139, 139);
 }
-// tags
-.tags {
-    display: flex;
-    text-align: center;
-    line-height: @htags;
-    height: @htags;
-    width: @wbox;
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    border-color: black;
-    .tags-btn {
-        cursor: pointer;
-        width: calc(@wbox / 2);
-        height: @htags;
+// 账号登陆
+.login-account {
+    margin: 25px 50px 0 0;
+    .el-button {
+        width: 160px;
     }
-    .tags-checked {
-        font-size: 23px;
-        color: rgb(108, 167, 255);
-        font-weight: bold;
+    // 微信登陆
+    .login-wx {
+        @square: 45px;
+        margin-left: calc(@wbox / 1.5);
+        width: @square;
+        height: @square;
+        border-radius: 10px;
     }
-}
-
-.log {
-    // bank
-    .log-bank {
-        margin: 25px 50px 0 0;
-        .el-button {
-            width: 160px;
-        }
-    }
-    #wxLogin {
-        width: @wbox;
-        height: @hbox - @htags;
-        background: rgb(206, 219, 219);
-    }
-}
-.disBlock {
-    display: block;
-}
-.disNone {
-    display: none;
 }
 </style>
