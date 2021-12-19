@@ -3,8 +3,7 @@
         <!-- 登陆 -->
         <div class="login-account">
             <!-- 账号登陆 -->
-
-            <el-form :model="login.onLogin" ref="forms" label-width="60px">
+            <el-form :model="login.onLogin" ref="forms" label-width="auto">
                 <el-form-item
                     label="账号"
                     prop="account"
@@ -20,9 +19,15 @@
                 </el-form-item>
             </el-form>
 
-            <div>
+            <div class="login-bottom">
+                <!-- 注册账号 -->
+                <div class="login-bottom-register">注册？</div>
                 <!-- 微信登陆 -->
-                <img src="../../assets/home/weixin-cion.jpg" class="login-wx" @click="wxCheck()" />
+                <img
+                    src="../../assets/home/weixin-cion.jpg"
+                    class="login-bottom-wx"
+                    @click="wxLogin()"
+                />
             </div>
         </div>
     </div>
@@ -50,8 +55,13 @@ const login: Login = reactive({
 let goLogin = (): void => {
     router.push('index')
 }
+// 账号注册
+const goRegister = () => {
+
+}
 // 微信登陆
-const wxCheck = () => {
+const wxLogin = () => {
+    console.log("微信登陆")
     // 重定向微信扫码
     axios.get('/api/wxlogin')
         .then(res => {
@@ -82,13 +92,33 @@ const wxCheck = () => {
     .el-button {
         width: 160px;
     }
-    // 微信登陆
-    .login-wx {
-        @square: 45px;
-        margin-left: calc(@wbox / 1.5);
-        width: @square;
-        height: @square;
-        border-radius: 10px;
+    .el-form {
+        font-size: 35px;
     }
+}
+// 底部
+.login-bottom {
+    display: flex;
+    // 第一个和最后一个子元素剩余空间是其他一半，其他平分剩余空间。
+    justify-content: space-around;
+}
+.login-bottom-item {
+    cursor: pointer;
+    @square: 45px;
+    width: @square;
+    height: @square;
+    border-radius: 10px;
+}
+//注册账号
+.login-bottom-register {
+    font-size: 15px;
+    font-weight: bolder;
+    background: white;
+    line-height: @square;
+    .login-bottom-item();
+}
+// 微信登陆
+.login-bottom-wx {
+    .login-bottom-item();
 }
 </style>
