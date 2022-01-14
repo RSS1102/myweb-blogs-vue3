@@ -1,35 +1,40 @@
 {
-  "name": "vue3-ts",
-  "version": "0.0.0",
-  "scripts": {
-    "build": "vue-tsc --noEmit && vite build",
-    "dev": "vite",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "axios": "^0.24.0",
-    "element-plus": "^1.2.0-beta.5",
-    "less": "^4.1.2",
-    "vue": "^3.2.23",
-    "vue-router": "^4.0.12"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^1.10.2",
-    "babel-plugin-component": "^1.1.1",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.0",
-    "vue-cli-plugin-element": "^1.0.1",
-    "vue-tsc": "^0.28.10"
-  },
-  "babel": {
-    "plugins": [
-      [
-        "component",
-        {
-          "libraryName": "element-ui",
-          "styleLibraryName": "theme-chalk"
-        }
-      ]
-    ]
-  }
+    "name": "vue3-ts",
+    "version": "0.0.0",
+    "license": "ISC",
+    "scripts": {
+        "build": "vue-tsc --noEmit && vite build",
+        "dev": "vite",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "axios": "^0.24.0",
+        "element-plus": "^1.2.0-beta.5",
+        "less": "^4.1.2",
+        "vue": "^3.2.23",
+        "vue-router": "^4.0.12"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.10.2",
+        "babel-plugin-component": "^1.1.1",
+        "typescript": "^4.4.4",
+        "vite": "^2.7.0",
+        "vue-cli-plugin-element": "^1.0.1",
+        "vue-tsc": "^0.28.10"
+    },
+    "babel": {
+        "plugins": [
+            [
+                "component",
+                {
+                    "libraryName": "element-ui",
+                    "styleLibraryName": "theme-chalk"
+                }
+            ]
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RSS1102/web.git"
+    }
 }

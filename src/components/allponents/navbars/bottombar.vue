@@ -7,7 +7,8 @@
 <script setup  lang="ts" >
 const ICP: String = '皖ICP备2021006489号'
 const goICP = (): void => {
-    location.href = "https://beian.miit.gov.cn"
+    // location.href = "https://beian.miit.gov.cn" //本页面打开页面
+    window.open("https://beian.miit.gov.cn","_blank")
 }
 </script>
 <style lang="less" >
@@ -22,7 +23,7 @@ const goICP = (): void => {
     border-color: black;
     border-width: 2px;
     font-size: 22px;
-    padding: 50px 0;
+    padding: 40px 0;
     .absolutes();
     text-align: center;
     width: 90vw;

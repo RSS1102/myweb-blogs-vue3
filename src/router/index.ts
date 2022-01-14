@@ -3,20 +3,17 @@ import { createRouter, createMemoryHistory, RouteRecordRaw, createWebHashHistory
 //createMemoryHistory 定义了路由模式
 //RouteRecordRaw 定义了路由格式
 // import HomeLoadinVue from '../components/home/HomeLoading.vue';
-import LoadingIn from '../views/LoadingIn.vue'
-import Home from '../views/Home.vue'
-import Index from '../views/index.vue'
+import LoadingIn from '../../views/loading/LoadingIn.vue'
+// import Home from '../components/allponents/HomeLoading.vue'
+import Index from '../views/Index.vue'
 
 const routers: RouteRecordRaw[] = [
 
     {
         path: '/',
-        component: Home
+        component: Index
     },
     {
-        path: '/home',
-        component: Home
-    }, {
         path: '/index/',
         component: Index
 

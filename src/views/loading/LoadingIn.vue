@@ -1,11 +1,9 @@
 <template>
     <HomeLoadingVue class="loading"></HomeLoadingVue>
-    <bottombarVue></bottombarVue>
 </template>
 <script lang="ts" setup>
-import HomeLoadingVue from '../components/home/HomeLoading.vue';
-import bottombarVue from '../components/allponents/navbars/bottombar.vue';
-import router from '../router';
+import HomeLoadingVue from '../../components/home/HomeLoading.vue';
+import router from '../../router';
 setTimeout(() => {
     router.push({ path: 'home' })
 
