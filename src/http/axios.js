@@ -1,10 +1,9 @@
-import { def } from "@vue/shared";
 import axios from "axios";
 import router from '../router/index';
 
 const conifg = {
     // 基础url前缀
-    baseURL = 'www.abc/api.com',
+    baseURL = 'https://www.fastmock.site/mock/08a1c38aec889a9ff18e4fae7345168c/ts',
     // 请求头信息
     headers = { 'Content-Type': 'application/json;charset=UTF-8' },
     // 设置超时时间
@@ -108,6 +107,8 @@ export default function $axios(options) {
                                         err.message = '请重试'
                                 }
                             }
+                            console.error(err)
+                            return Promise.reject(err) // 返回接口返回的错误信息
                         },
 
                     )

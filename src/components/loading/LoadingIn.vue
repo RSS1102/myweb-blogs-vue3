@@ -2,7 +2,7 @@
     <HomeLoadingVue class="loading"></HomeLoadingVue>
 </template>
 <script lang="ts" setup>
-import HomeLoadingVue from '../../components/home/HomeLoading.vue';
+import HomeLoadingVue from './HomeLoading.vue';
 import router from '../../router';
 setTimeout(() => {
     router.push({ path: 'home' })
