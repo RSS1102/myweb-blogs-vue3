@@ -26,7 +26,6 @@
  * onkeyup="this.value=this.value.replace(/[, ]/g,'')"
  */
 import { reactive, ref } from 'vue'
-import login from '../../http/api'
 interface LoginType {
     account: String,
     password: String,
@@ -38,7 +37,7 @@ const loginFrom: LoginType = reactive({
 const loginRules = reactive({
     account: [{
         required: true,
-        message: 'Please input Activity name',
+        message: '请输入你的账号',
         trigger: 'blur',
     },
     {
@@ -50,11 +49,12 @@ const loginRules = reactive({
         max: 15,
         message: "Your account too long",
         trigger: 'change',
-    }],
+    }
+    ],
     password: [
         {
             required: true,
-            message: 'Please input your account',
+            message: '请输入你的密码',
             trigger: 'blur',
         },
         {
@@ -76,7 +76,7 @@ const submitForm = (formEl: any) => {
     formEl.validate((valid: any) => {
         if (valid) {
             // 执行验证
-            login
+
         } else {
             // 返回错误
             return false
@@ -87,6 +87,7 @@ const submitForm = (formEl: any) => {
 
 <style lang='less' scoped>
 .title {
+    
     font-size: 28px;
 }
 </style>

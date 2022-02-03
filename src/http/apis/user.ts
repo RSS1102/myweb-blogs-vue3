@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from '../request'
 
 /**
  * 用户管理
@@ -9,5 +9,11 @@ export const login = <T>(data: T) => {
         url: '/login',
         method: 'post',
         data
+    })
+}
+export const test = <T>() => {
+    return axios({
+        url: '/gettest',
+        method: 'get',
     })
 }

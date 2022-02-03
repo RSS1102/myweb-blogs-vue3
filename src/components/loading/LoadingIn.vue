@@ -1,8 +1,8 @@
 <template>
-    <HomeLoadingVue class="loading"></HomeLoadingVue>
+    <FrontLoadingVue class="loading"></FrontLoadingVue>
 </template>
 <script lang="ts" setup>
-import HomeLoadingVue from './HomeLoading.vue';
+import FrontLoadingVue from './FrontLoading.vue';
 import router from '../../router';
 setTimeout(() => {
     router.push({ path: 'home' })

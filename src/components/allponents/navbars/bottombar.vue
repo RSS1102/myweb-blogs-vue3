@@ -1,6 +1,6 @@
 <template>
     <div class="father">
-        <div class="son" @click="goICP">{{ ICP }}</div>
+        <span @click="goICP">{{ ICP }}</span>
     </div>
 </template>
 
@@ -8,29 +8,24 @@
 const ICP: String = '皖ICP备2021006489号'
 const goICP = (): void => {
     // location.href = "https://beian.miit.gov.cn" //本页面打开页面
-    window.open("https://beian.miit.gov.cn","_blank")
+    window.open("https://beian.miit.gov.cn", "_blank")
 }
 </script>
-<style lang="less" >
+<style lang="less"  scoped >
 .father {
-    display: flex;
-    justify-content: center;
-}
-
-.son {
-    cursor: pointer;
     border-style: solid none none none;
     border-color: black;
     border-width: 2px;
-    font-size: 22px;
-    padding: 40px 0;
-    .absolutes();
-    text-align: center;
-    width: 90vw;
+    font-size: 2vh;
+    padding: 1vh 0;
     color: rgb(98, 98, 165);
+    text-align: center;
+    width: 100vw;
+    // 是否透明 0/1
+    opacity: 1;
 }
-.absolutes {
-    position: absolute;
-    bottom: 0;
+
+span {
+    cursor: pointer;
 }
 </style>
