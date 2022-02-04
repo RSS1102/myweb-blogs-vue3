@@ -8,7 +8,7 @@
                 <div>也希望能结交到更多的朋友，一起学习和进步。</div>
             </div>
         </div>
-        <div>
+        <div class="table">
             <div>摸鱼时间表</div>
             <div>
                 <span>今天是:</span>
@@ -61,6 +61,7 @@ html {
     overflow: hidden;
     height: 100%;
 }
+// card
 .box {
     background: rgba(229, 229, 233, 0.21);
     background-repeat: no-repeat;
@@ -77,20 +78,41 @@ html {
 }
 .box-card-item {
     //文字间距
-    letter-spacing: 2px;
+    letter-spacing: 1%;
     text-align: center;
-    width: 25vw;
-    height: 40vh;
     background: rgba(31, 63, 167, 0.35);
-    box-shadow: 10px 15px 15px rgba(31, 63, 167, 0.2);
     border-radius: 15px;
+    // 小card
+    width: 550px;
+    height: 450px;
+    transform: translate(50px, 50px) scale(0.3) rotate(45deg);
+    box-shadow: 10px 15px 15px rgba(230, 118, 26, 0.2),
+        -10px -15px 25px rgba(255, 60, 0, 0.4);
 
     .title {
-        font-size: 2.5vw;
+        font-size: 45px;
         font-family: "Comic Sans MS", cursive, sans-serif;
     }
     div {
         margin: 30px 0;
     }
 }
+.box-card-item:hover {
+    /* animation：动画名称 花费时间 运动曲线 何时开始 播放次数 是否反方向 */
+    animation: move 4s;
+    animation-fill-mode: forwards;
+    // css文字不可被选中
+    user-select: none;
+}
+@keyframes move {
+    0% {
+        transform: translate(50px, 50px) scale(0.3) rotate(45deg);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        box-shadow: 15px 15px 15px rgba(31, 63, 167, 0.2);
+    }
+}
+
+// table
 </style>
