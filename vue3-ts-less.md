@@ -49,7 +49,7 @@ npm install less
 
    ```css
    //动画 ：  动画名称 花费时间 运动曲线 何时开始 播放次数 是否反方向 
-   animation: name duration timing-function delay iteration-count direction;
+   animation: name duration timing-function delay iteration-count direction(alternate);
    
    // 使用名为三次贝塞尔（Cubic Bezier）函数的数学函数，来生成速度曲线。您能够在该函数中使用自己的值，也可以预定义的值：value(见下表格)
    animation-timing-function: value;
@@ -94,8 +94,18 @@ npm install less
    ```
 
    3. transform（翻转）
-
-
+   
+   4. ``` http
+      GitHubApi
+      //获取项目的基本信息（name,description，topics，html_url）[仓库名，简介，主题，仓库地址]
+      https://api.github.com/repos/RSS1102/wxapp--forum
+      //获取最后一次提交的记录commit（date，message），author（avatar_url，html_url）【commit（时间，留言），（提交者的头像，和地址）】
+      https://api.github.com/repos/RSS1102/wxapp--forum/commits?per_page=1
+      //获取readme
+      https://api.github.com/repos/RSS1102/punch_card/readme
+      ```
+   
+   5. 
 
 ---
 ### 三遇到的一些问题：

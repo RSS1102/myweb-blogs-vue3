@@ -21,8 +21,6 @@ const goICP = (): void => {
     color: rgb(98, 98, 165);
     text-align: center;
     width: 100vw;
-    // 是否透明 0/1
-    opacity: 1;
 }
 
 span {

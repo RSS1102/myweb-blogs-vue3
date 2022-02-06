@@ -1,58 +1,24 @@
 <template>
-    <div class="box">
-        <div class="box-card">
-            <div class="box-card-item">
-                <div class="title">我们都是"打工人"!</div>
-                <div>欢迎你来到这里，这里我的一个小破站。</div>
-                <div>用来记录我的学习。</div>
-                <div>也希望能结交到更多的朋友，一起学习和进步。</div>
+    <el-container>
+        <el-main>
+            <div class="box">
+                <div class="box-card">
+                    <div class="box-card-item">
+                        <div class="title">我们都是"打工人"!</div>
+                        <div>欢迎你来到这里。</div>
+                        <div>这里是我的一个小破站，用来记录我的学习。</div>
+                        <div>也希望能结交到更多的朋友，一起学习和进步。</div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="table">
-            <div>摸鱼时间表</div>
-            <div>
-                <span>今天是:</span>
-                <span></span>
-            </div>
-            <div>
-                <span>现在是:</span>
-                <span></span>
-            </div>
-            <!-- 午饭，晚上，夜宵 -->
-            <div>
-                <span>距离:</span>
-                <span></span>
-                <span>还有:</span>
-                <span></span>
-                <span>那么晚了还在加班吗？注意身体哦</span>
-            </div>
-            <!-- 告诫语 -->
-            <div>
-                <span>工作的老板的，身体是自己的。</span>
-                <span>记得多喝水，多去厕所，多运动。</span>
-                <span>保持好身体的健康，还能更好地为老板挣钱。</span>
-            </div>
-            <!-- 周末/下周末 -->
-            <div>
-                <span>距离:</span>
-                <span></span>
-                <span>还有:</span>
-                <span></span>
-            </div>
-            <!--假期还有:下一个假期or所有重要的假期-->
-            <div>
-                <span>距离:</span>
-                <span></span>
-                <span>还有:</span>
-                <span></span>
-            </div>
-            <div>
-                <span>"新时代农民工!"</span>
-            </div>
-        </div>
-    </div>
+        </el-main>
+        <el-footer>
+            <bottombar-vue></bottombar-vue>
+        </el-footer>
+    </el-container>
 </template>
 <script lang='ts' setup>
+import bottombarVue from '../../components/allponents/navbars/bottombar.vue';
 
 </script>
 
@@ -63,32 +29,30 @@ html {
 }
 // card
 .box {
-    background: rgba(229, 229, 233, 0.21);
-    background-repeat: no-repeat;
-    background-size: 100%;
     display: flex;
     font-size: 1vw;
     height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 .box-card {
     width: 50vw;
+    height: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 15vh;
+    align-items: center;
 }
 .box-card-item {
     //文字间距
     letter-spacing: 1%;
     text-align: center;
-    background: rgba(31, 63, 167, 0.35);
+    background: rgba(71, 72, 167, 0.2);
+    color: aliceblue;
     border-radius: 15px;
     // 小card
-    width: 550px;
-    height: 450px;
-    transform: translate(50px, 50px) scale(0.3) rotate(45deg);
-    box-shadow: 10px 15px 15px rgba(230, 118, 26, 0.2),
-        -10px -15px 25px rgba(255, 60, 0, 0.4);
-
+    width: 30vw;
+    height: 50vh;
+    animation: shadow 1s infinite alternate;
+    margin: 0 8vh 0 8vw;
     .title {
         font-size: 45px;
         font-family: "Comic Sans MS", cursive, sans-serif;
@@ -99,20 +63,55 @@ html {
 }
 .box-card-item:hover {
     /* animation：动画名称 花费时间 运动曲线 何时开始 播放次数 是否反方向 */
-    animation: move 4s;
+    animation: hoverstyle 3s;
     animation-fill-mode: forwards;
     // css文字不可被选中
     user-select: none;
 }
-@keyframes move {
+@keyframes shadow {
     0% {
-        transform: translate(50px, 50px) scale(0.3) rotate(45deg);
+        box-shadow: 10px 15px 15px rgba(56, 56, 56, 0.6),
+            -15px -20px 25px rgba(197, 197, 197, 0.6);
     }
     100% {
-        transform: translate(0px, 0px) scale(1) rotate(0deg);
-        box-shadow: 15px 15px 15px rgba(31, 63, 167, 0.2);
+        box-shadow: 10px 15px 45px rgba(111, 179, 243, 0.6),
+            -15px -15px 25px rgba(111, 179, 243, 0.6);
+    }
+}
+@keyframes hoverstyle {
+    0% {
+        background: rgba(71, 72, 167, 0.2);
+    }
+    100% {
+        box-shadow: 15px 15px 15px rgba(31, 63, 167, 0.5);
+        color: rgb(0, 0, 0);
+        background: rgba(255, 255, 255, 0.7);
     }
 }
 
-// table
+// 定义骨架
+html {
+    overflow-x: hidden;
+}
+// 去掉Container的padding
+:v-deep(.el-container),
+:v-deep(.el-main),
+:v-deep(.el-footer) {
+    margin: 0;
+    padding: 0;
+}
+.el-container,
+.el-main,
+.el-footer {
+    padding: 0;
+}
+.el-container {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url("../../assets/home/by.jpg");
+}
+.el-main {
+    height: 100%;
+}
 </style>

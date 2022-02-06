@@ -11,21 +11,18 @@
         <el-image :src="imgUlr" @click="goHome"></el-image>
         <el-menu-item index="/home/index">首页</el-menu-item>
         <el-menu-item index="/blogs/index">我的博客</el-menu-item>
+        <el-menu-item index="/product/index">作品展示</el-menu-item>
         <el-menu-item index="4">交流</el-menu-item>
-        <el-menu-item index="5">作品展示</el-menu-item>
         <el-menu-item index="6">共同学习</el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
       <router-view></router-view>
     </el-main>
-    <el-footer>
-      <bottombar-vue></bottombar-vue>
-    </el-footer>
   </el-container>
 </template>
 <script lang="ts" setup>
-import bottombarVue from '../components/allponents/navbars/bottombar.vue';
+
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 // 添加logo
@@ -68,19 +65,21 @@ html {
 .el-container {
   height: 100vh;
 }
-.el-menu {
-  color: rgb(131, 100, 100);
-  background-color: #248ac533;
-}
+
 .el-main {
   height: 100%;
 }
-
+.el-menu {
+  background-color: #248ac533;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
 .el-image {
   width: 3em;
   height: 3em;
-  padding: 0.5em 0;
-  margin-left: 20%;
+  margin: 5px 25px 0 0;
 }
 .el-menu-item {
   font-weight: bold;
