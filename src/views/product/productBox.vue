@@ -1,27 +1,28 @@
 <template>
     <div class="box">
-        <div class="title">标题</div>
-        <div class="description">
-            <!-- v-for -->
-            <el-tag>Tag 1</el-tag>
-            <el-tag>Tag 1</el-tag>
-            <el-tag>Tag 1</el-tag>
-            <el-tag>Tag 1</el-tag>
-        </div>
-        <div
-            class="topis-msg"
-        >说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明明说明说明说明说明说明说明明说明说明说明说明说明说明说明说明明说明说明</div>
-        <div class="update">
-            <div class="topis-msg">上次更新的message上次更新的message上次更新的message上次更新的message</div>
-            <div class="update-user">
-                <div class="update-user-avatar">头像</div>
-                <div class="update-time">上次11324444更新的时间</div>
-            </div>
+        <div class="title">{{ props.title }}</div>
+        <el-divider></el-divider>
+        <el-tag v-for="(item, index) in tags">{{ item }}</el-tag>
+        <div class="topis-msg">{{ topis }}</div>
+
+        <div class="topis-msg">{{ message }}</div>
+        <div class="update-user">
+            <div class="update-user-avatar">头像</div>
+            <div class="update-time">上次11324444更新的时间</div>
         </div>
     </div>
 </template>
 
 <script lang='ts' setup>
+import type { PropType } from 'vue'
+const props = defineProps({
+    title: { type: String as PropType<string>, },
+    tags: { type: Array },
+    topis: { type: String as PropType<string>, },
+    message: { type: String as PropType<string>, },
+    updaterAvatar: { type: String as PropType<string>, },
+    updateTime: { type: String as PropType<string>, },
+})
 
 </script>
 
@@ -37,26 +38,34 @@ body {
         5px 5px 5px rgba(226, 219, 219, 0.5);
     padding: 10px;
     width: 350px;
-    height: 250px;
+    height: 280px;
 }
-.description,
+
 .topis-msg {
     margin: 10px 0;
 }
+
 .el-tag {
     margin-left: 10px;
 }
 .title {
     font-size: 35px;
-    margin: 10px 0 0 50px;
+    text-align: center;
+    // 单行文本省略
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-indent: 20px;
 }
 .topis-msg {
     // 文字空格
     text-indent: 20px;
+    // 多行文本省略
+    word-break: break-all;
+    display: -webkit-box;
     overflow: hidden;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    display: -webkit-box;
 }
 .update-user {
     height: 40px;

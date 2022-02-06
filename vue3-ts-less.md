@@ -114,4 +114,20 @@ npm install less
 
     - router 路由中名称 和文件夹(目录), 文件名需要保证大小写一致。
 
-2. 
+2. **多行文本省略号：**字母不能正常换行
+
+    添加：**数字字母自动换行：**word-break: break-all;
+
+``` css
+//单行文本省略号：
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+
+//多行文本省略号：
+display: -webkit-box;
+-webkit-line-clamp: 8;
+-webkit-box-orient: vertical;
+overflow: hidden;
+```
+
