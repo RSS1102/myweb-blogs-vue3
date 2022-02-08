@@ -1,13 +1,16 @@
 <template>
     <el-container>
         <el-main>
-            <div class="box">
-                <div class="box-card">
-                    <div class="box-card-item">
-                        <div class="title">我们都是"打工人"!</div>
-                        <div>欢迎你来到这里。</div>
-                        <div>这里是我的一个小破站，用来记录我的学习。</div>
-                        <div>也希望能结交到更多的朋友，一起学习和进步。</div>
+            <div class="page">
+                <div class="imgs">
+                    <div class="icon-item">
+                        <img class="icon" src="../../assets/img/icon/github.svg" />
+                        <img class="icon" src="../../assets/img/icon/github.svg" />
+                        <img class="icon" src="../../assets/img/icon/github.svg" />
+                    </div>
+                    <div class="name-font">RSS1102</div>
+                    <div class="flex">
+                        <img class="to-photo" src="../../assets/img/icon/logo.png" />
                     </div>
                 </div>
             </div>
@@ -23,6 +26,7 @@ import bottombarVue from '../../components/allponents/navbars/bottombar.vue';
 </script>
 
 <style lang='less' scoped>
+@icon: 40px;
 html {
     overflow: hidden;
     height: 100%;
@@ -89,6 +93,69 @@ html {
     }
 }
 
+@font-face {
+    font-family: "mang-img";
+    src: url("../../assets/font/ZCOOL.ttf");
+    /* img-weight: normal;
+    img-style: normal; */
+}
+.name-font {
+    text-align: center;
+    margin: 50px;
+    font-family: "mang-img";
+    font-size: 035px;
+}
+.page {
+    display: flex;
+    justify-content: center;
+}
+.imgs {
+    margin-top: 100px;
+    width: 500px;
+}
+.icon-item {
+    display: flex;
+    justify-content: space-around;
+}
+.icon {
+    width: @icon;
+    height: @icon;
+    border-radius: 50%;
+    vertical-align: -0.15em; /* 因icon大小被设置为和字体大小一致，而span等标签的下边缘会和字体的基线对齐，故需设置一个往下的偏移比例，来纠正视觉上的未对齐效果 */
+    fill: currentColor; /* 定义元素的颜色，currentColor是一个变量，这个变量的值就表示当前元素的color值，如果当前元素未设置color值，则从父元素继承 */
+}
+.icon:hover {
+    box-shadow: -5px 5px 15px rgba(167, 155, 145, 0.5),
+        5px -5px 15px rgba(167, 155, 145, 0.5),
+        -5px -5px 15px rgba(167, 155, 145, 0.5),
+        5px 5px 15px rgba(167, 155, 145, 0.5);
+}
+.flex {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.to-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    box-shadow: 10px 15px 15px rgba(56, 56, 56, 0.6),
+        -15px -20px 25px rgba(197, 197, 197, 0.6);
+}
+.to-photo:hover {
+    animation: to-photo-hover 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes to-photo-hover {
+    0% {
+    }
+    100% {
+        border-radius: 10%;
+        box-shadow: 10px 15px 15px rgba(56, 56, 56, 0.6),
+            -15px -20px 25px rgba(197, 197, 197, 0.6);
+    }
+}
+
 // 定义骨架
 html {
     overflow-x: hidden;
@@ -109,7 +176,7 @@ html {
     height: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
-    background-image: url("../../assets/home/by.jpg");
+    // background-image: url("../../assets/home/by.jpg");
 }
 .el-main {
     height: 100%;
