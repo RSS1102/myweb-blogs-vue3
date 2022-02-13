@@ -17,3 +17,9 @@ export const test = <T>() => {
         method: 'get',
     })
 }
+export const getnav = <T>() => {
+    return axios({
+        url: '/getnav',
+        method: 'get',
+    })
+}

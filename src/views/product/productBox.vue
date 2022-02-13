@@ -2,27 +2,28 @@
     <div class="box">
         <div class="title">{{ props.title }}</div>
         <el-divider></el-divider>
-        <el-tag v-for="(item, index) in tags">{{ item }}</el-tag>
-        <div class="topis-msg">{{ topis }}</div>
+        <el-tag v-for="(item in props.tags">{{ item }}</el-tag>
+        <div class="topi s-msg">{{ props.topis }}</div>
 
-        <div class="topis-msg">{{ message }}</div>
+        <div class="topis-msg">{{ props.message }}</div>
         <div class="update-user">
-            <div class="update-user-avatar">头像</div>
-            <div class="update-time">上次11324444更新的时间</div>
+            <img class="update-user-avatar" :src="props.updaterAvatar" />
+            <div class="update-time">props.updateTime</div>
         </div>
     </div>
 </template>
 
 <script lang='ts' setup>
-import type { PropType } from 'vue'
+import { PropType } from 'vue'
 const props = defineProps({
-    title: { type: String as PropType<string>, },
-    tags: { type: Array },
-    topis: { type: String as PropType<string>, },
-    message: { type: String as PropType<string>, },
-    updaterAvatar: { type: String as PropType<string>, },
-    updateTime: { type: String as PropType<string>, },
+    title: String,
+    tags: Array as PropType<string[]>,
+    topis: String,
+    message: String,
+    updaterAvatar: String,
+    updateTime: String,
 })
+
 
 </script>
 
@@ -38,7 +39,7 @@ body {
         5px 5px 5px rgba(226, 219, 219, 0.5);
     padding: 10px;
     width: 350px;
-    height: 280px;
+    height: 290px;
 }
 
 .topis-msg {
@@ -75,7 +76,7 @@ body {
 }
 .update-user-avatar {
     margin-right: 10px;
-    background: red;
+
     width: 40px;
     height: 40px;
     border-radius: 50%;

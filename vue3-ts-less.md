@@ -42,6 +42,19 @@ npm install less
    import Element from 'element-plus'
    createApp(App).use(Element).use(router).mount('#app')
    ```
+   
+   3. 怎么调用axios
+   
+      ``` js
+      import { test } from '../../http/apis/user'
+      const onClick = (): any => {
+          test().then(res => {
+              console.log(res)
+          })
+      }
+      ```
+   
+      
 
 ## 二，一些笔记
 

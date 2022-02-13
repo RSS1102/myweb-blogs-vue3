@@ -16,10 +16,10 @@ import { reactive } from 'vue';
 import productbox from './productBox.vue';
 const Props = reactive({
     title: "vue-vben-admin",
-    tags: ["123", "456"],
+    tags: ["123", "456", "456", "456",],
     topis: "这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介",
     message: "1commitcommitcommitcommitcommitcommitcommitcommitcommitcommitcommitcommitcmmitcommitcommitcommitcommitcommit1",
-    updaterAvatar: "更新者的头像连接",
+    updaterAvatar: "http://192.168.1.2:3000/src/assets/img/icon/github.svg",
     updateTime: "更新者的时间",
 
 })
