@@ -37,13 +37,6 @@ html {
     height: 100%;
 }
 
-@font-face {
-    font-family: "mang-img";
-    src: url("../../assets/font/ZCOOL.ttf");
-    /* img-weight: normal;
-    img-style: normal; */
-}
-
 .page {
     height: 100%;
     display: flex;
@@ -56,7 +49,7 @@ html {
     text-align: center;
     margin: 50px;
     font-family: "mang-img";
-    font-size: 035px;
+    font-size: 35px;
 }
 
 .icon-item {
