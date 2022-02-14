@@ -48,7 +48,7 @@ html {
 .name-font {
     text-align: center;
     margin: 50px;
-    font-family: "mang-img";
+    font-family: "fontone";
     font-size: 35px;
 }
 

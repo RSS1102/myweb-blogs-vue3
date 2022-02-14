@@ -14,8 +14,14 @@ const Menurouter = [
     //product
     {
         path: '/product/index',
-        Name: 'blogs',
+        Name: 'product',
         component: () => import('../views/product/index.vue'),
+    },
+    //communication
+    {
+        path: '/communication/index',
+        Name: 'communication',
+        component: () => import('../views/communication/index.vue'),
     },
 
 ]

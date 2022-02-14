@@ -57,7 +57,7 @@ const onclickNav = (navIndex: any): void => {
     .side-nav-bar-title {
         text-align: center;
         .name {
-            font-family: "mang-img";
+            font-family: "fontone";
             font-size: 35px;
             height: 20%;
         }
