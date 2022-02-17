@@ -70,7 +70,7 @@ html {
   height: 100%;
 }
 .el-menu {
-  background-color: #248ac533;
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   margin: 0;

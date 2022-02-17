@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 </script>
-<style>
+<style lang='less' scoped>
 .page {
     display: flex;
     justify-content: center;

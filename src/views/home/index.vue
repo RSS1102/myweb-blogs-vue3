@@ -34,7 +34,10 @@ import bottombarVue from '../../components/allponents/navbars/bottombar.vue';
 @icon: 40px;
 html {
     overflow: hidden;
-    height: 100%;
+}
+.el-container {
+    background: url("../../assets/img/home/girl1.jpg");
+    z-index: -1;
 }
 
 .page {
@@ -115,8 +118,9 @@ html {
     background-size: 100%;
     // background-image: url("../../assets/home/by.jpg");
 }
-// .el-main {
-//     height: 100%;
-//     width: 100vw;
-// }
+.el-footer,
+.el-main {
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: inset 100px 100px 1000px rgba(255, 255, 255, 0.5);
+}
 </style>
