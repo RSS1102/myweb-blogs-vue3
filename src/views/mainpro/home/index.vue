@@ -2,19 +2,22 @@
     <el-container>
         <el-main>
             <div class="page">
-                <img class="to-photo" src="../../assets/img/icon/logo.png" />
+                <img class="to-photo" src="../../../assets/img/icon/logo.png" />
                 <div class="name-font">RSS1102</div>
                 <div class="icon-item">
-                    <a href="https://github.com/RSS1102" target="_blank">
-                        <img class="icon" src="../../assets/img/icon/github.svg" />
+                    <a class="github-a" href="https://github.com/RSS1102" target="_blank">
+                        <img class="icon" src="../../../assets/img/icon/github.svg" />
+                        <div class="github">github/RSS1102</div>
                     </a>
 
-                    <a href="https://twitter.com/Jimmy48375955" target="_blank">
-                        <img class="icon" src="../../assets/img/icon/twitter.png" />
+                    <a class="twitter-a" href="https://twitter.com/Jimmy48375955" target="_blank">
+                        <img class="icon" src="../../../assets/img/icon/twitter.png" />
+                        <div class="twitter">twitter/Jimmy48375955</div>
                     </a>
 
-                    <a href="mailto:jimmyrss1102@gmail.com" target="_blank">
-                        <img class="icon" src="../../assets/img/icon/logo_gmail.png" />
+                    <a class="email-a" href="mailto:jimmyrss1102@gmail.com" target="_blank">
+                        <img class="icon" src="../../../assets/img/icon/logo_gmail.png" />
+                        <div class="email">jimmyrss1102@gmail.com</div>
                     </a>
                 </div>
             </div>
@@ -25,7 +28,7 @@
     </el-container>
 </template>
 <script lang='ts' setup>
-import bottombarVue from '../../components/allponents/navbars/bottombar.vue';
+import bottombarVue from '../../../components/allponents/navbars/bottombar.vue';
 </script>
 
 <style lang='less' scoped>
@@ -36,7 +39,7 @@ html {
     overflow: hidden;
 }
 .el-container {
-    background: url("../../assets/img/home/girl1.jpg");
+    background: url("../../../assets/img/home/girl1.jpg");
     z-index: -1;
 }
 
@@ -53,15 +56,23 @@ html {
     margin: 50px;
     font-family: "fontone";
     font-size: 35px;
+    font-weight: bold;
+    // 彩色字体
+    background: linear-gradient(90deg, #2112a8 5%, #f0400b 80%, #d64e24 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .icon-item {
+    text-align: center;
     display: flex;
     justify-content: space-around;
     width: 500px;
 }
 .icon {
-    border: 1px solid rgb(190, 185, 185, 0.2);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     width: @icon;
     height: @icon;
     border-radius: 50%;
@@ -90,14 +101,35 @@ html {
     0% {
     }
     100% {
-        border-radius: 10%;
+        border-radius: 22%;
         box-shadow: 15px 20px 25px rgba(235, 160, 160, 0.6),
             -15px -20px 25px rgba(218, 138, 138, 0.6),
             15px -20px 25px rgba(235, 160, 160, 0.6),
             -15px 20px 25px rgba(218, 138, 138, 0.6);
     }
 }
-
+.github,
+.twitter,
+.email {
+    visibility: hidden;
+    color: white;
+    background: rgba(102, 102, 102, 0.6);
+    border-radius: 5px;
+    padding: 2px;
+}
+.github-a:hover .github {
+    visibility: visible;
+}
+.twitter-a:hover .twitter {
+    visibility: visible;
+}
+.email-a:hover .email {
+    visibility: visible;
+}
+a {
+    color: #000000;
+    font-weight: bold;
+}
 // 定义骨架
 
 // 去掉Container的padding

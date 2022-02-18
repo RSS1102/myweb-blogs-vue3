@@ -14,7 +14,7 @@
 import { ref, reactive } from 'vue';
 import promptwordsVue from './promptwords.vue';
 import talksmodesVue from './talksmodes.vue'
-import { msglist } from '../../http/apis/communication'
+import { msglist } from '../../../http/apis/communication'
 
 const Propslist = ref()
 const onclick = async () => {
@@ -22,13 +22,7 @@ const onclick = async () => {
         Propslist.value = res
     })
 }
-
 onclick()
-
-
-
-
-
 </script>
 
 <style lang='less' scoped>
