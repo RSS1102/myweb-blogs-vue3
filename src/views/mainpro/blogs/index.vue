@@ -25,24 +25,33 @@
 </template>
 
 <script lang='ts'  setup>
-import { ref, toRaw } from 'vue';
+import { nextTick, ref, toRaw } from 'vue';
 import { getnav } from '../../../http/apis/user'
+import { ElLoading } from 'element-plus'
+// 页面loading
+ElLoading.service()
 let nav = ref()
 let navText = ref()
-navText.value = "navText"
+const loadingInstance = ElLoading.service({
+    body: true, text: "加载中...", spinner: 'loading', target: 'document.body',
+})
 const onclick = async () => {
     await getnav().then(res => {
         nav.value = res
+
         console.log(res)
+        nextTick(() => {
+            // Loading should be closed asynchronously
+            loadingInstance.close()
+        })
     })
 }
 onclick()
-
 const onclickNav = (navIndex: any): void => {
     console.log(toRaw(navIndex.text))
     navText.value = toRaw(navIndex.text)
-
 }
+
 </script>
 
 <style lang='less' scoped>

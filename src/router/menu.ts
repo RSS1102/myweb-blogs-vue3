@@ -23,6 +23,12 @@ const Menurouter = [
         Name: 'communication',
         component: () => import('../views/mainpro/communication/index.vue'),
     },
+    //demo
+    {
+        path: '/demo/index',
+        Name: 'demo',
+        component: () => import('../views/mainpro/demo/index.vue'),
+    },
 
 ]
 export default Menurouter

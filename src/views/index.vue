@@ -13,7 +13,7 @@
         <el-menu-item index="/blogs/index">我的博客</el-menu-item>
         <el-menu-item index="/product/index">作品展示</el-menu-item>
         <el-menu-item index="/communication/index">交流</el-menu-item>
-        <el-menu-item index="6">共同学习</el-menu-item>
+        <el-menu-item index="/demo/index">Demo</el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
