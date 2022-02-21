@@ -2,8 +2,10 @@
     <div class="box">
         <div class="title">{{ props.title }}</div>
         <el-divider></el-divider>
-        <el-tag v-for="(item in props.tags">{{ item }}</el-tag>
-        <div class="topi s-msg">{{ props.topis }}</div>
+        <div class="lines">
+            <el-tag v-for="item in props.tags">{{ item }}</el-tag>
+        </div>
+        <div class="topis-msg">{{ props.topis }}</div>
 
         <div class="topis-msg">{{ props.message }}</div>
         <div class="update-user">
@@ -39,14 +41,25 @@ body {
         5px 5px 5px rgba(226, 219, 219, 0.5);
     padding: 10px;
     width: 350px;
-    height: 290px;
+    height: 300px;
 }
 
 .topis-msg {
     margin: 10px 0;
 }
+.lines {
+    width: 350px;
+    height: 55px;
+    // 多行文本省略
+    word-break: break-all;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 
 .el-tag {
+    display: inline;
     margin-left: 10px;
 }
 .title {
