@@ -3,16 +3,16 @@ import router from '../router/index';
 
 const conifg = {
     // 基础url前缀
-    baseURL: 'https://www.fastmock.site/mock/08a1c38aec889a9ff18e4fae7345168c/ts',
+    baseURL: '/api',
     // 请求头信息
     headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+
     // 设置超时时间
     timeout: 1000,
     // 携带凭证
     withCredentials: false
 
 };
-
 export default function $axios(options: AxiosRequestConfig<any>) {
     return new Promise((resolve, reject) => {
         const instance = axios.create({

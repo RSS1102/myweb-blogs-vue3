@@ -144,3 +144,37 @@ display: -webkit-box;
 overflow: hidden;
 ```
 
+3. ##### 跨域问题：
+
+   - vite.config.ts文件：
+
+     ``` tsx
+     server: {
+         proxy: {
+           // '/api': 'http://localhost:3003'
+           '/api': {
+             target: 'http://localhost:3003/api/',
+             changeOrigin: true,
+             rewrite: path => path.replace(/^\/api/, ''),
+           },
+         },
+       }
+     ```
+
+   - axios配置：
+
+     ```tsx
+     const conifg = {
+         // 基础url前缀(这里地址只写/api)
+         baseURL: '/api',
+         // 请求头信息
+         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+         // 设置超时时间
+         timeout: 1000,
+         // 携带凭证
+         withCredentials: false
+     
+     };
+     ```
+
+     

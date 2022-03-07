@@ -6,9 +6,10 @@
                 <div class="name">RSS1102</div>
             </div>
             <div class="menu">
-                <el-menu default-active="1" v-for="item in nav">
+                <el-menu default-active="1" v-for="(item, index) in nav">
                     <el-sub-menu index>
                         <template #title>
+                            <!-- <span>{{ item.index }}</span> -->
                             <span>{{ item.title }}</span>
                         </template>
                         <el-menu-item
@@ -26,7 +27,7 @@
 
 <script lang='ts'  setup>
 import { nextTick, ref, toRaw } from 'vue';
-import { getnav } from '../../../http/apis/user'
+import { getBlogs } from '../../../http/apis/user'
 import { ElLoading } from 'element-plus'
 // 页面loading
 ElLoading.service()
@@ -36,9 +37,8 @@ const loadingInstance = ElLoading.service({
     body: true, text: "加载中...", spinner: 'loading', target: 'document.body',
 })
 const onclick = async () => {
-    await getnav().then(res => {
+    await getBlogs().then(res => {
         nav.value = res
-
         console.log(res)
         nextTick(() => {
             // Loading should be closed asynchronously
