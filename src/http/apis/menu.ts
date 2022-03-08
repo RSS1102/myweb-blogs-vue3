@@ -1,19 +1,13 @@
 import axios from '../request'
 
 /**
- * 用户管理
+ * menu
  */
 
-export const login = <T>(data: T) => {
+
+export const getProduct = <T>() => {
     return axios({
-        url: '/login',
-        method: 'post',
-        data
-    })
-}
-export const test = <T>() => {
-    return axios({
-        url: '/gettest',
+        url: '/product/getgithublist',
         method: 'get',
     })
 }

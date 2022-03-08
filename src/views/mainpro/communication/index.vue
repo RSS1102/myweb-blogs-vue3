@@ -17,12 +17,12 @@ import talksmodesVue from './talksmodes.vue'
 import { msglist } from '../../../http/apis/communication'
 
 const Propslist = ref()
-const onclick = async () => {
-    await msglist().then((res) => {
-        Propslist.value = res
-    })
-}
-onclick()
+// const onclick = async () => {
+//     await msglist().then((res) => {
+//         Propslist.value = res
+//     })
+// }
+// onclick()
 </script>
 
 <style lang='less' scoped>

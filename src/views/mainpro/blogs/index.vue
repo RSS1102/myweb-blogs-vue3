@@ -6,7 +6,7 @@
                 <div class="name">RSS1102</div>
             </div>
             <div class="menu">
-                <el-menu default-active="1" v-for="(item, index) in nav">
+                <el-menu default-active="1" v-for="(item, index) in theBlogs">
                     <el-sub-menu index>
                         <template #title>
                             <!-- <span>{{ item.index }}</span> -->
@@ -14,7 +14,7 @@
                         </template>
                         <el-menu-item
                             @click="onclickNav(navIndex)"
-                            v-for="navIndex in item.SecondNavBar"
+                            v-for="navIndex in item.nav"
                             index
                         >{{ navIndex.content }}</el-menu-item>
                     </el-sub-menu>
@@ -27,26 +27,25 @@
 
 <script lang='ts'  setup>
 import { nextTick, ref, toRaw } from 'vue';
-import { getBlogs } from '../../../http/apis/user'
+import { getBlogs } from '../../../http/apis/menu'
 import { ElLoading } from 'element-plus'
 // 页面loading
 ElLoading.service()
-let nav = ref()
+let theBlogs = ref()
 let navText = ref()
 const loadingInstance = ElLoading.service({
     body: true, text: "加载中...", spinner: 'loading', target: 'document.body',
 })
-const onclick = async () => {
-    await getBlogs().then(res => {
-        nav.value = res
-        console.log(res)
-        nextTick(() => {
-            // Loading should be closed asynchronously
-            loadingInstance.close()
-        })
+
+getBlogs().then(res => {
+    theBlogs.value = res
+    console.log(res)
+    nextTick(() => {
+        // Loading should be closed asynchronously
+        loadingInstance.close()
     })
-}
-onclick()
+})
+
 const onclickNav = (navIndex: any): void => {
     console.log(toRaw(navIndex.text))
     navText.value = toRaw(navIndex.text)
