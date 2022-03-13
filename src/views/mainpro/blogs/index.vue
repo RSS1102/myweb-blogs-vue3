@@ -1,7 +1,7 @@
 <template>
     <div class="nav-bar">
         <div class="side-nav-bar">
-            <div class="side-nav-bar-title">
+            <div class="side-nav-bar-title" @click="goIndex()">
                 <img />
                 <div class="name">RSS1102</div>
             </div>
@@ -22,6 +22,7 @@
             </div>
         </div>
         <div>{{ navText }}</div>
+        <div v-if="!navText">空值</div>
     </div>
 </template>
 
@@ -29,6 +30,7 @@
 import { nextTick, ref, toRaw } from 'vue';
 import { getBlogs } from '../../../http/apis/menu'
 import { ElLoading } from 'element-plus'
+
 // 页面loading
 ElLoading.service()
 let theBlogs = ref()
@@ -45,10 +47,13 @@ getBlogs().then(res => {
         loadingInstance.close()
     })
 })
-
+// 路由跳转，改变navtext值
 const onclickNav = (navIndex: any): void => {
     console.log(toRaw(navIndex.text))
     navText.value = toRaw(navIndex.text)
+}
+const goIndex = () => {
+    navText.value = null
 }
 
 </script>
@@ -63,6 +68,7 @@ const onclickNav = (navIndex: any): void => {
     border-width: 1px;
     border-color: #e6e6e6;
     .side-nav-bar-title {
+        cursor: pointer;
         text-align: center;
         .name {
             font-family: "fontone";

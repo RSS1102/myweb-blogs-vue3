@@ -15,12 +15,14 @@
             </div>
         </template>
         <div class="lines margins">
-            <div v-if="props.topics?.length == 0">暂未有标签...</div>
+            <div class="undedec" v-if="props.topics?.length == 0">暂未有标签...</div>
             <el-tag v-for="item in props.topics">{{ item }}</el-tag>
         </div>
-        <div class="lines text-indent">{{ props.description }}</div>
-        <div class="languages">这里用来显示语言的成分</div>
-
+        <div class="lines text-indent undedec" v-if="props.description == undefined">暂未有描述...</div>
+        <div class="lines text-indent" v-else>{{ props.description }}</div>
+        <div class="languages">
+            <progress-item :progObj="props.languages"></progress-item>
+        </div>
         <div class="the-commit">
             <div class="updated">
                 <el-icon>
@@ -45,6 +47,7 @@
 <script lang='ts' setup>
 import { PropType } from 'vue'
 import { Promotion, StarFilled, Failed } from '@element-plus/icons-vue'
+import progressItem from '../../../components/allponents/progress.vue';
 const props = defineProps({
     name: String,
     topics: Array as PropType<string[]>,
@@ -53,7 +56,10 @@ const props = defineProps({
     fork: Boolean,
     homepage: String,
     commits: Object,
-    languages: Object,
+    languages: {
+        type: Object,
+        required: true
+    },
     url: String
 
 })
@@ -98,7 +104,8 @@ body {
     }
 }
 .languages {
-    margin: 15px 0;
+    height: 80px;
+    width: 350px;
 }
 .updated {
     .el-icon {
@@ -133,6 +140,8 @@ body {
 }
 .text-indent {
     text-indent: 25px;
+    margin: 7px 0;
+    height: 42px;
 }
 .margins {
     margin: 15px 0;
@@ -144,5 +153,10 @@ body {
     background: rgba(255, 196, 0, 0.815);
     padding: 3px;
     border-radius: 5px;
+}
+.undedec {
+    margin: 5px 0;
+    font-style: italic;
+    color: rgb(224, 154, 24);
 }
 </style>

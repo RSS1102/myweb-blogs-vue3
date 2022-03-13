@@ -13,6 +13,7 @@
             :homepage="item.homepage"
             :commits="item.ware_commits"
             :url="item.url"
+            :languages="item.ware_languages"
             class="productbox"
         ></productbox>
     </div>

@@ -1,13 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <el-menu
-        mode="horizontal"
-        @select="handleSelect"
-        :default-active="defRouters"
-        background-color="  #248ac533"
-        router
-      >
+      <el-menu mode="horizontal" :default-active="defRouters" background-color="  #248ac533" router>
         <el-image :src="imgUlr" @click="goHome"></el-image>
         <el-menu-item index="/home/index">首页</el-menu-item>
         <el-menu-item index="/blogs/index">我的博客</el-menu-item>
@@ -38,10 +32,6 @@ const route = useRoute();
 let defRouters = computed(() => {
   return route.path
 })
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-}
-
 
 </script>
 <style lang="less" scoped>

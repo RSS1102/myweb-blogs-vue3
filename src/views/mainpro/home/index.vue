@@ -28,7 +28,7 @@
     </el-container>
 </template>
 <script lang='ts' setup>
-import bottombarVue from '../../../components/allponents/navbars/bottombar.vue';
+import bottombarVue from '../../../components/allponents/bottombar.vue';
 </script>
 
 <style lang='less' scoped>
