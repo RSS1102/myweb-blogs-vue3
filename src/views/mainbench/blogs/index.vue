@@ -49,7 +49,6 @@ getBlogs().then(res => {
 })
 // 路由跳转，改变navtext值
 const onclickNav = (navIndex: any): void => {
-    console.log(toRaw(navIndex.text))
     navText.value = toRaw(navIndex.text)
 }
 const goIndex = () => {

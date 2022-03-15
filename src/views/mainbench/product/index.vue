@@ -21,10 +21,6 @@
 
 <script  lang='ts' setup>
 /**
- * 格式化一下tags,objct=>arr[后端已完成]
- * 格式化一下时间，封装一个格式化时间js
- * 部分值没有传完，进行传完
- * 封装一个组件进行显示语言的
  * 点击链接要完成
  */
 import { nextTick, ref } from 'vue';

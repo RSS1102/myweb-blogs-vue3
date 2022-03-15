@@ -24,10 +24,7 @@ import imgurl from '../assets/favicon.ico'
 const imgUlr = ref(imgurl);
 const goHome = () => {
 }
-/**
- * 默认路由状态
- * 
- */
+//  默认路由状态
 const route = useRoute();
 let defRouters = computed(() => {
   return route.path

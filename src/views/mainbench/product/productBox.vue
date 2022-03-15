@@ -86,9 +86,10 @@ body {
         font-weight: bold;
         margin-left: 20px;
         cursor: pointer;
+        color: rgb(21, 21, 197);
     }
     .header-title:hover {
-        color: rgb(116, 116, 116);
+        color: rgb(154, 159, 231);
     }
 }
 .lines {
