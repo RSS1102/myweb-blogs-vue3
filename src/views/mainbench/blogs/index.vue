@@ -1,5 +1,5 @@
 <template>
-    <div class="nav-bar">
+    <div class="nav-bar" v-loading="loading">
         <div class="side-nav-bar">
             <div class="side-nav-bar-title" @click="goIndex()">
                 <img />
@@ -29,22 +29,16 @@
 <script lang='ts'  setup>
 import { nextTick, ref, toRaw } from 'vue';
 import { getBlogs } from '../../../http/apis/menu'
-import { ElLoading } from 'element-plus'
 
-// 页面loading
-ElLoading.service()
 let theBlogs = ref()
 let navText = ref()
-const loadingInstance = ElLoading.service({
-    body: true, text: "加载中...", spinner: 'loading', target: 'document.body',
-})
+let loading = ref(true)
 
 getBlogs().then(res => {
     theBlogs.value = res
     console.log(res)
     nextTick(() => {
-        // Loading should be closed asynchronously
-        loadingInstance.close()
+        loading.value = false
     })
 })
 // 路由跳转，改变navtext值

@@ -18,7 +18,8 @@ const routers: RouteRecordRaw[] = [
 ]
 const router = createRouter({
     // createWebHashHistory
-    history: createWebHistory(),
+    // createWebHistory
+    history: createWebHashHistory(),
     routes: routers
 })
 

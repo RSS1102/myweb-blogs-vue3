@@ -26,7 +26,7 @@ let progObj = reactive(props.progObj)
 let sum: number = 0
 let theId = ref('')
 for (let j in progObj) {
-    let n = progObj[j]
+    let n = parseInt(progObj[j])
     sum += n
     let per = (n / sum * 100).toFixed(2) + '%'
     theId.value = per
@@ -38,7 +38,7 @@ let itemstyle = []
 // let progressSign: HTMLCollectionOf<Element> = document.getElementsByClassName("sign-item-circle")
 for (let i = 0; i < len; i++) {
     let keys: string = (Object.keys(progObj))[i]
-    let num: number = progObj[keys]
+    let num: number = parseInt(progObj[keys])
     let per = (num / sum * 100).toFixed(2) + '%'
     let hsl = i * 50
     let backcolor = `hsl(${hsl}, 100%, 50%)`

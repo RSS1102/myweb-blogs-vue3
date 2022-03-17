@@ -23,27 +23,26 @@
 /**
  * 点击链接要完成
  */
+import qs from 'qs';
 import { nextTick, ref } from 'vue';
 import productbox from './productBox.vue';
 import { getProduct } from '../../../http/apis/menu'
 import { ElLoading } from 'element-plus'
 import { timeFormatter } from '../../../util/tools';
-// 页面loading
-// ElLoading.service()
-// const loadingInstance = ElLoading.service({
-//     body: true, text: "加载中...", spinner: 'loading', target: 'document.body',
-// })
+
 
 let theProducts = ref()
 getProduct().then((res: any) => {
+    console.log("res1", res)
     for (let i in res) {
+        res[i].ware_commits = qs.parse(res[i].ware_commits)
+        res[i].ware_languages = qs.parse(res[i].ware_languages)
+        res[i].ware_topicsTags = qs.parse(res[i].ware_topicsTags).topicstags
+        console.log("s",)
         res[i].ware_commits.commit_date = timeFormatter(res[i].ware_commits.commit_date)
     }
     theProducts.value = res
-    console.log(res)
     // nextTick(() => {
-    //     // Loading should be closed asynchronously
-    //     loadingInstance.close()
     // })
 })
 </script>
