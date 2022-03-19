@@ -13,10 +13,10 @@
                             <span>{{ item.title }}</span>
                         </template>
                         <el-menu-item
-                            @click="onclickNav(navIndex)"
-                            v-for="navIndex in item.nav"
+                            @click="onclickNav(item.title, navIndex)"
+                            v-for="navIndex in item.navs"
                             index
-                        >{{ navIndex.content }}</el-menu-item>
+                        >{{ navIndex }}</el-menu-item>
                     </el-sub-menu>
                 </el-menu>
             </div>
@@ -27,14 +27,18 @@
 </template>
 
 <script lang='ts'  setup>
-import { nextTick, ref, toRaw } from 'vue';
-import { getBlogs } from '../../../http/apis/menu'
+import { nextTick, ref, toRaw, PropType } from 'vue';
+import { getBlogMenu, getBlogcontent } from '../../../http/apis/blogsmenu'
+import qs from 'qs'
 
 let theBlogs = ref()
 let navText = ref()
 let loading = ref(true)
 
-getBlogs().then(res => {
+getBlogMenu().then((res: any) => {
+    for (let i in res) {
+        res[i].navs = qs.parse(res[i].navs).navs
+    }
     theBlogs.value = res
     console.log(res)
     nextTick(() => {
@@ -42,8 +46,13 @@ getBlogs().then(res => {
     })
 })
 // 路由跳转，改变navtext值
-const onclickNav = (navIndex: any): void => {
-    navText.value = toRaw(navIndex.text)
+const onclickNav = (title: string, navIndex: any): void => {
+    console.log(title, navIndex)
+    let data = { navindex: navIndex, title: title }
+    getBlogcontent(data).then((res: any) => {
+        console.log(res)
+    })
+    navText.value = toRaw(title + navIndex)
 }
 const goIndex = () => {
     navText.value = null

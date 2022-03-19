@@ -26,7 +26,7 @@
 import qs from 'qs';
 import { nextTick, ref } from 'vue';
 import productbox from './productBox.vue';
-import { getProduct } from '../../../http/apis/menu'
+import { getProduct } from '../../../http/apis/probuct'
 import { ElLoading } from 'element-plus'
 import { timeFormatter } from '../../../util/tools';
 
