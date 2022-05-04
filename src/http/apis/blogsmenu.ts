@@ -5,15 +5,15 @@ import axios from '../request'
  */
 
 export const getBlogMenu = () => {
-    return axios({
-        url: '/blogs/getblogmenu',
-        method: 'get',
-    })
+  return axios({
+    url: '/blogs/getblogmenu',
+    method: 'get',
+  })
 }
-export const getBlogcontent = (data: object) => {
-    return axios({
-        url: '/blogs/blogcontent',
-        method: 'post',
-        data
-    })
+export const getBlogContent = (data: object) => {
+  return axios({
+    url: '/blogs/blogcontent',
+    method: 'post',
+    data
+  })
 }
