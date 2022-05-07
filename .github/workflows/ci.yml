@@ -1,0 +1,42 @@
+# https://blog.csdn.net/Ber_Bai/article/details/120303880
+name: Build app and deploy to Tencent
+on:
+  #监听push/pull_request操作
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  # 任务ID
+  build:
+    # 运行环境
+    runs-on: ubuntu-latest
+    # 步骤
+    steps:
+      # 使用别人的action
+      - uses: actions/checkout@v2
+      # 步骤名称
+      - name: npm install
+        # 步骤执行指令
+        run: npm install
+      - name: npm run build
+        run: npm run build
+      # 命名这个任务为发布Deploy
+      - name: ssh scp ssh pipelines
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+          host: ${{ secrets.DC_HOST }}
+          user: ${{ secrets.DC_USER }}
+          pass: ${{ secrets.DC_PASS }}
+          port: 22
+          connect_timeout: 10s
+          first_ssh: |
+            rm -rf /www/wwwroot/www.cokbbs.games/dist
+            mkdir -p /www/wwwroot/www.cokbbs.games/dist
+          scp: |
+            './dist/*' => /www/wwwroot/www.cokbbs.games/dist
