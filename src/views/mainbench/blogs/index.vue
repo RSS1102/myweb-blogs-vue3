@@ -3,33 +3,62 @@
     <div class="side-nav-bar">
       <div class="side-nav-bar-title" @click="goIndex()">
         <img />
-        <div class="name">RSS1102</div>
+        <div class="blog-logo">RSS1102</div>
       </div>
       <div class="menu">
         <el-menu default-active="1" v-for="(titleItem, nav) in BlogMenu">
-          <el-sub-menu index>
+          <el-sub-menu :index="nav">
             <template #title>
-              <span>{{ nav }}</span>
+              <!-- {{ nav }} -->
+              <el-tooltip placement="right">
+                <template #content>{{ nav }}</template>
+                <span class="menu-nav">{{ nav }}</span>
+              </el-tooltip>
             </template>
-            <el-menu-item @click="onclickNav(nav, title)" v-for="title in titleItem" index>{{ title }}
+            <el-menu-item @click="onclickNav(nav, title)" v-for="title in titleItem" :index="title">{{ title }}
             </el-menu-item>
           </el-sub-menu>
         </el-menu>
       </div>
     </div>
-    <div v-if="!navText">空值</div>
-    <div>{{ navText }}</div>
-
+    <div v-if="!blogsPage.blogTitle">kong</div>
+    <div class="blogs-class" v-else>
+      <div>{{ blogsPage }}</div>
+      <div class="blog-title">{{ blogsPage.blogTitle }}</div>
+      <!-- 时间，访问量 -->
+      <div class="secondary-info">
+        <span class="blog-created">
+          <el-icon>
+            <Timer />
+          </el-icon>
+          <span class="created-time">{{ blogsPage.createdAt }}</span>
+        </span>
+        <span class="blog-visited">
+          <span class="iconfont icon-fire"> </span>
+          <span>{{ blogsPage.visitedNum }} </span>
+        </span>
+      </div>
+      <el-divider />
+    </div>
   </div>
 </template>
 
 <script lang='ts'  setup>
-import { nextTick, ref, toRaw, PropType } from 'vue';
+import { nextTick, ref, toRaw, PropType, reactive } from 'vue';
 import { getBlogMenu, getBlogContent } from '../../../http/apis/blogsmenu'
-import qs from 'qs'
+import { Timer } from '@element-plus/icons-vue'
 
 let BlogMenu = ref()
-let navText = ref()
+let blogsPage = reactive({
+  articleShow: 0,
+  blogContent: "",
+  blogNav: "",
+  blogTitle: "",
+  createdAt: "",
+  id: 0,
+  updatedAt: "",
+  visitedNum: 0,
+})
 let loading = ref(true)
 
 getBlogMenu().then((res) => {
@@ -37,19 +66,26 @@ getBlogMenu().then((res) => {
   loading.value = false
 })
 
-// 路由跳转，改变navtext值
+// 路由跳转，改变blogsPage 值
 const onclickNav = (nav: any, title: string): void => {
   console.log(nav, title)
   let data = { blogNav: nav, blogTitle: title }
   getBlogContent(data).then((res: any) => {
-    console.log(res)
-    navText.value = res
+    blogsPage.articleShow = res.articleShow;
+    blogsPage.blogContent = res.blogContent;
+    blogsPage.blogNav = res.blogNav;
+    blogsPage.blogTitle = res.blogTitle;
+    blogsPage.createdAt = res.createdAt;
+    blogsPage.id = res.id;
+    blogsPage.updatedAt = res.updatedAt;
+    blogsPage.visitedNum = res.visitedNum;
   })
 
 }
 // 显示简介
 const goIndex = () => {
-  navText.value = null
+  blogsPage.blogTitle = "";
+
 }
 </script>
 
@@ -68,9 +104,10 @@ const goIndex = () => {
     cursor: pointer;
     text-align: center;
 
-    .name {
+    .blog-logo {
+      margin: 20px 30px;
       font-family: "fontone";
-      font-size: 35px;
+      font-size: 38px;
       height: 20%;
       font-weight: bolder;
       background: linear-gradient(90deg,
@@ -85,6 +122,12 @@ const goIndex = () => {
 
   .menu {
     height: 80%;
+
+    .menu-nav {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-right: 15px;
+    }
   }
 
   .el-menu {
@@ -98,5 +141,42 @@ const goIndex = () => {
   border-style: solid none none none;
   border-width: 1px;
   border-color: #e6e6e6;
+}
+
+// 内容
+.blogs-class {
+  width: 100%;
+
+  .blog-title {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .secondary-info {
+    text-align: center;
+    margin: 15px 0;
+
+    .blog-created {
+      margin: 0 15px;
+
+      .el-icon {
+        margin: 0 5px;
+      }
+
+      .created-time {
+        font-style: italic;
+      }
+    }
+
+    .blog-visited {
+      margin: 0 15px;
+
+      .icon-fire {
+        margin: 0 5px;
+      }
+    }
+  }
 }
 </style>
