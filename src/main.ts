@@ -1,5 +1,5 @@
 import { createApp, getCurrentInstance, ComponentInternalInstance } from 'vue'
-import App from './app.vue'
+import App from './App.vue'
 import router from './router'
 import Element from 'element-plus'
 import 'element-plus/dist/index.css'
