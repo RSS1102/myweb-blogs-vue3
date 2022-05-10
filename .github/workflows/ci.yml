@@ -45,5 +45,5 @@ jobs:
             ./dist.tar.gz  => "/www/wwwroot/www.cokbbs.games/"
             #在ssh上操作(上传完文件之后)
           last_ssh: |
-            cd  /www/wwwroot/
+            cd  /www/wwwroot/www.cokbbs.games/
             tar -zxvf dist.tar.gz
