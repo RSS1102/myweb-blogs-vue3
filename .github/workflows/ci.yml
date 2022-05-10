@@ -38,7 +38,7 @@ jobs:
           pass: ${{ secrets.DC_PASS }}
           port: 22
           connect_timeout: 10s
-          local: "./test/*"
+          local: "./dist/*"
           remote: /www/wwwroot/www.cokbbs.games/
           # 在github 上操作上传文件(此处是上传压缩包)
           scp: |
