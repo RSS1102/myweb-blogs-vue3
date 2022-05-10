@@ -6,39 +6,51 @@
         <div class="blog-logo">RSS1102</div>
       </div>
       <div class="menu">
-        <el-menu default-active="1" v-for="(titleItem, nav) in BlogMenu">
+        <el-menu :default-active="defaultActive" v-for="(titleItem, nav) in BlogMenu">
           <el-sub-menu :index="nav">
             <template #title>
-              <!-- {{ nav }} -->
               <el-tooltip placement="right">
                 <template #content>{{ nav }}</template>
                 <span class="menu-nav">{{ nav }}</span>
               </el-tooltip>
             </template>
-            <el-menu-item @click="onclickNav(nav, title)" v-for="title in titleItem" :index="title">{{ title }}
+            <el-menu-item @click="onclickNav(SecondNav.id)" v-for="(SecondNav, inx) in titleItem"
+              :index="SecondNav.id.toString()">
+              {{ SecondNav.blogTitle }}
             </el-menu-item>
           </el-sub-menu>
         </el-menu>
       </div>
     </div>
-    <div v-if="!blogsPage.blogTitle">kong</div>
-    <div class="blogs-class" v-else>
-      <div>{{ blogsPage }}</div>
-      <div class="blog-title">{{ blogsPage.blogTitle }}</div>
-      <!-- 时间，访问量 -->
-      <div class="secondary-info">
-        <span class="blog-created">
-          <el-icon>
-            <Timer />
-          </el-icon>
-          <span class="created-time">{{ blogsPage.createdAt }}</span>
-        </span>
-        <span class="blog-visited">
-          <span class="iconfont icon-fire"> </span>
-          <span>{{ blogsPage.visitedNum }} </span>
-        </span>
+    <div class=" blogs-class">
+      <div v-if="!blogsPage.blogTitle" class="blogs-main">kong</div>
+      <div class="blogs-main" v-else>
+        <div class="blog-nav"><span class="nav-title">来自集合：</span> <span>{{ blogsPage.blogNav }}</span></div>
+        <div class="blog-title">{{ blogsPage.blogTitle }}</div>
+        <!-- 时间，访问量 -->
+        <div class="secondary-info">
+          <span class="blog-created">
+            <el-icon>
+              <Timer />
+            </el-icon>
+            <span class="created-time">{{ blogsPage.createdAt }}</span>
+          </span>
+          <span class="blog-visited">
+            <span class="iconfont icon-fire"> </span>
+            <span>{{ blogsPage.visitedNum }} </span>
+          </span>
+        </div>
+        <el-divider />
+        <div class="blog-content" v-html="blogsPage.blogContent"></div>
       </div>
       <el-divider />
+      <div class="blog-footer">
+        <span class="blog-author">RSS1102</span>
+        <span v-if="blogsPage.updatedAt !== blogsPage.createdAt" class="blog-updated">
+          <span>{{ blogsPage.updatedAt }}</span>
+          <span> 进行过更改。</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -47,8 +59,12 @@
 import { nextTick, ref, toRaw, PropType, reactive } from 'vue';
 import { getBlogMenu, getBlogContent } from '../../../http/apis/blogsmenu'
 import { Timer } from '@element-plus/icons-vue'
+import { timeFormatter } from '../../../util/tools';
+
+import { useRoute, useRouter } from 'vue-router'
 
 let BlogMenu = ref()
+let defaultActive = ref("0")
 let blogsPage = reactive({
   articleShow: 0,
   blogContent: "",
@@ -67,21 +83,24 @@ getBlogMenu().then((res) => {
 })
 
 // 路由跳转，改变blogsPage 值
-const onclickNav = (nav: any, title: string): void => {
-  console.log(nav, title)
-  let data = { blogNav: nav, blogTitle: title }
+const route = useRoute()
+const router = useRouter()
+const onclickNav = (id: number): void => {
+  router.push(`/blogs/index/${id}`)
+  let data = { id: id }
   getBlogContent(data).then((res: any) => {
     blogsPage.articleShow = res.articleShow;
     blogsPage.blogContent = res.blogContent;
     blogsPage.blogNav = res.blogNav;
     blogsPage.blogTitle = res.blogTitle;
-    blogsPage.createdAt = res.createdAt;
+    blogsPage.createdAt = timeFormatter(res.createdAt);
     blogsPage.id = res.id;
-    blogsPage.updatedAt = res.updatedAt;
+    blogsPage.updatedAt = timeFormatter(res.updatedAt);
     blogsPage.visitedNum = res.visitedNum;
   })
-
+  defaultActive.value = id.toString()
 }
+onclickNav(parseInt(route.params.id as string))
 // 显示简介
 const goIndex = () => {
   blogsPage.blogTitle = "";
@@ -90,6 +109,20 @@ const goIndex = () => {
 </script>
 
 <style lang='less' scoped>
+.logo {
+  margin: 20px 30px;
+  font-family: "fontone";
+  height: 20%;
+  font-weight: bolder;
+  background: linear-gradient(90deg,
+      #2112a8 5%,
+      #f0400b 80%,
+      #d64e24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .nav-bar {
   display: flex;
   height: 100%;
@@ -105,18 +138,8 @@ const goIndex = () => {
     text-align: center;
 
     .blog-logo {
-      margin: 20px 30px;
-      font-family: "fontone";
       font-size: 38px;
-      height: 20%;
-      font-weight: bolder;
-      background: linear-gradient(90deg,
-          #2112a8 5%,
-          #f0400b 80%,
-          #d64e24 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      .logo ()
     }
   }
 
@@ -147,8 +170,21 @@ const goIndex = () => {
 .blogs-class {
   width: 100%;
 
+  .blog-nav {
+    font-weight: bolder;
+    font-style: italic;
+    color: #ff7575;
+
+    .nav-title {
+      background: #040100;
+      border-radius: 5px;
+      padding: 1px;
+      color: aliceblue;
+    }
+  }
+
   .blog-title {
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
@@ -178,5 +214,32 @@ const goIndex = () => {
       }
     }
   }
+
+  .blogs-main {
+    min-height: 75vh;
+  }
+
+
+
+  .blog-footer {
+    margin-right: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .blog-updated {
+      line-height: 70px;
+      font-style: italic;
+      color: rgb(131, 131, 131);
+    }
+
+    .blog-author {
+      font-weight: bolder;
+      margin: 0 20px;
+      font-size: 24px;
+      .logo ()
+    }
+
+  }
+
 }
 </style>
