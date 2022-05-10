@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "99827163",
+      "name": "fire",
+      "font_class": "fire",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    }
+  ]
+}

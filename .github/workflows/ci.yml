@@ -1,0 +1,49 @@
+name: Build app and deploy to Tencent
+on:
+  #监听push操作
+  push:
+    branches:
+      # mian分支，你也可以改成其他分支
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  # 任务ID
+  build:
+    # 运行环境
+    runs-on: ubuntu-latest
+    # 步骤
+    steps:
+      # 使用别人的action
+      - uses: actions/checkout@v2
+      # 步骤名称
+      # 步骤执行指令
+      - name: npm install
+        run: npm install
+      - name: npm run build
+        run: npm run build
+      - name: tar压缩  tar -c [options] [<file>
+        run: tar -czvf  dist.tar.gz  ./dist/
+      # 命名这个任务为发布Deploy
+      # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
+      - name: ssh scp ssh pipelines
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+          host: ${{ secrets.DC_HOST }}
+          user: ${{ secrets.DC_USER }}
+          pass: ${{ secrets.DC_PASS }}
+          port: 22
+          connect_timeout: 10s
+          local: "./test/*"
+          remote: /www/wwwroot/www.cokbbs.games/
+          # 在github 上操作上传文件(此处是上传压缩包)
+          scp: |
+            ./dist.tar.gz  => "/www/wwwroot/www.cokbbs.games/"
+            #在ssh上操作(上传完文件之后)
+          last_ssh: |
+            cd  /www/wwwroot/
+            tar -zxvf dist.tar.gz
