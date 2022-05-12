@@ -7,6 +7,10 @@ const Menurouter = [
   },
   // blogs
   {
+    path: '/blogs/index/',
+    redirect: '/blogs/index/0',
+  },
+  {
     path: '/blogs/index/:id',
     Name: 'blogs',
     component: () => import('../views/mainbench/blogs/index.vue'),

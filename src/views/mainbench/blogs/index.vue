@@ -22,10 +22,13 @@
         </el-menu>
       </div>
     </div>
-    <div class=" blogs-class">
+    <div class="blogs-class">
       <div v-if="!blogsPage.blogTitle" class="blogs-main">kong</div>
       <div class="blogs-main" v-else>
-        <div class="blog-nav"><span class="nav-title">来自集合：</span> <span>{{ blogsPage.blogNav }}</span></div>
+        <div class="blog-nav">
+          <span class="nav-title">来自集合：</span>
+          <span>{{ blogsPage.blogNav }}</span>
+        </div>
         <div class="blog-title">{{ blogsPage.blogTitle }}</div>
         <!-- 时间，访问量 -->
         <div class="secondary-info">
@@ -56,15 +59,15 @@
 </template>
 
 <script lang='ts'  setup>
-import { nextTick, ref, toRaw, PropType, reactive } from 'vue';
-import { getBlogMenu, getBlogContent } from '../../../http/apis/blogsmenu'
-import { Timer } from '@element-plus/icons-vue'
-import { timeFormatter } from '../../../util/tools';
+import { nextTick, ref, toRaw, PropType, reactive } from "vue";
+import { getBlogMenu, getBlogContent } from "../../../http/apis/blogsmenu";
+import { Timer } from "@element-plus/icons-vue";
+import { timeFormatter } from "../../../util/tools";
 
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from "vue-router";
 
-let BlogMenu = ref()
-let defaultActive = ref("0")
+let BlogMenu = ref();
+let defaultActive = ref("0");
 let blogsPage = reactive({
   articleShow: 0,
   blogContent: "",
@@ -74,20 +77,22 @@ let blogsPage = reactive({
   id: 0,
   updatedAt: "",
   visitedNum: 0,
-})
-let loading = ref(true)
+});
+let loading = ref(true);
 
 getBlogMenu().then((res) => {
-  BlogMenu.value = res
-  loading.value = false
-})
+  BlogMenu.value = res;
+  loading.value = false;
+});
 
 // 路由跳转，改变blogsPage 值
-const route = useRoute()
-const router = useRouter()
+// 获取:id
+const route = useRoute();
+// 设置:id
+const router = useRouter();
 const onclickNav = (id: number): void => {
-  router.push(`/blogs/index/${id}`)
-  let data = { id: id }
+  router.push(`/blogs/index/${id}`);
+  let data = { id: id };
   getBlogContent(data).then((res: any) => {
     blogsPage.articleShow = res.articleShow;
     blogsPage.blogContent = res.blogContent;
@@ -97,15 +102,16 @@ const onclickNav = (id: number): void => {
     blogsPage.id = res.id;
     blogsPage.updatedAt = timeFormatter(res.updatedAt);
     blogsPage.visitedNum = res.visitedNum;
-  })
-  defaultActive.value = id.toString()
-}
-onclickNav(parseInt(route.params.id as string))
-// 显示简介
+  });
+  defaultActive.value = id.toString();
+};
+onclickNav(parseInt(route.params.id as string));
+// 显示简介\
+console.log(route.params.id)
 const goIndex = () => {
   blogsPage.blogTitle = "";
-
-}
+  router.push(`/blogs/index/0`);
+};
 </script>
 
 <style lang='less' scoped>
@@ -114,10 +120,7 @@ const goIndex = () => {
   font-family: "fontone";
   height: 20%;
   font-weight: bolder;
-  background: linear-gradient(90deg,
-      #2112a8 5%,
-      #f0400b 80%,
-      #d64e24 100%);
+  background: linear-gradient(90deg, #2112a8 5%, #f0400b 80%, #d64e24 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -139,7 +142,7 @@ const goIndex = () => {
 
     .blog-logo {
       font-size: 38px;
-      .logo ()
+      .logo ();
     }
   }
 
@@ -219,8 +222,6 @@ const goIndex = () => {
     min-height: 75vh;
   }
 
-
-
   .blog-footer {
     margin-right: 100px;
     display: flex;
@@ -236,10 +237,8 @@ const goIndex = () => {
       font-weight: bolder;
       margin: 0 20px;
       font-size: 24px;
-      .logo ()
+      .logo ();
     }
-
   }
-
 }
 </style>
