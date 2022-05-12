@@ -1,10 +1,10 @@
 name: Build app and deploy to Tencent
 on:
-  #监听push/pull_request操作
+  #监听push操作
   # push:
-  # branches:
-  # mian分支，你也可以改成其他分支
-  #  - main
+  #   branches:
+  #     # mian分支，你也可以改成其他分支
+  #     - main
   pull_request:
     branches:
       - main
@@ -33,12 +33,12 @@ jobs:
           WELCOME: "ssh scp ssh pipelines"
           LASTSSH: "Doing something after copying"
         with:
-          host: ${{ secrets.DC_HOST }}
-          user: ${{ secrets.DC_USER }}
-          pass: ${{ secrets.DC_PASS }}
+          host: ${{ secrets.DC_HOST}}
+          user: ${{ secrets.DC_USER}}
+          pass: ${{ secrets.DC_PASS}}
           port: 22
           connect_timeout: 10s
-          local: "./dist/*"
+          local: "./*"
           remote: /www/wwwroot/www.cokbbs.games/
           # 在github 上操作上传文件(此处是上传压缩包)
           scp: |
