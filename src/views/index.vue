@@ -9,9 +9,9 @@
   </el-container>
 </template>
 <script lang="ts" setup>
-import topMenu from '../components/allponents/topMenu.vue';
+import topMenu from '@/components/allponents/topMenu.vue';
 // 返回当前路由地址
-import router from '../router';
+import router from '@/router';
 // console.log(router.currentRoute.value.fullPath)
 </script>
 <style lang="less" scoped>

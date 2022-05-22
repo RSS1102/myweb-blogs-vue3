@@ -14,7 +14,7 @@
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 // 添加logo
-import imgurl from '../../assets/img/favicon.ico'
+import imgurl from '@/assets/img/favicon.ico'
 const imgUlr = ref(imgurl);
 const goHome = () => {
 }

@@ -40,8 +40,8 @@
 </template>
 <script lang='ts' setup>
 import { nextTick, ref } from 'vue';
-import topMenu from '../../../components/allponents/topMenu.vue';
-import bottomBar from '../../../components/allponents/bottombar.vue';
+import topMenu from '@/components/allponents/topMenu.vue';
+import bottomBar from '@/components/allponents/bottombar.vue';
 // ！！！要在页面渲染之后才可以
 nextTick(() => {
     // 构造星星

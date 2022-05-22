@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
 import FrontLoadingVue from './FrontLoading.vue';
-import router from '../../router';
+import router from '@/router';
 setTimeout(() => {
     router.push({ path: 'home' })
 

@@ -9,16 +9,17 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    //添加快捷路径@
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom"
-    ]
   },
   "include": [
     "src/**/*.ts",
