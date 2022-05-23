@@ -33,7 +33,7 @@ const prop = defineProps({
 })
 
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .el-menu {
     display: flex;
     justify-content: center;

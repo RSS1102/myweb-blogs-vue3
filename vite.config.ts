@@ -5,6 +5,7 @@ import { join } from "path";
 export default defineConfig({
   plugins: [vue()],
   //添加快捷路径@
+  // https://vitejs.dev/config/#resolve-alias
   resolve: {
     alias: {
       '@': join(__dirname, "src"),
