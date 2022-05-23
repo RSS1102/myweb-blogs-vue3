@@ -1,20 +1,14 @@
 <template>
-    <promptwordsVue></promptwordsVue>
-
-    <talksmodesVue
-        v-for=" item in Propslist"
-        :talkUser="item.talkUser"
-        :talkAvatar="item.talkAvatar"
-        :talkMessage="item.talkMessage"
-        :talkTime="item.talkTime"
-    ></talksmodesVue>
+    <prompt-words></prompt-words>
+    <talks-modes v-for=" item in Propslist" :talkUser="item.talkUser" :talkAvatar="item.talkAvatar"
+        :talkMessage="item.talkMessage" :talkTime="item.talkTime"></talks-modes>
 </template>
 
 <script lang='ts' setup>
 import { ref, reactive } from 'vue';
-import promptwordsVue from './promptwords.vue';
-import talksmodesVue from './talksmodes.vue'
-import { msglist } from '../../../http/apis/communication'
+import promptWords from './promptwords.vue';
+import talksModes from './talksmodes.vue'
+import { msglist } from '@/http/apis/communication'
 
 const Propslist = ref()
 // const onclick = async () => {

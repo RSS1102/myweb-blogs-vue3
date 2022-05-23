@@ -1,9 +1,17 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import { join } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  //添加快捷路径@
+  // https://vitejs.dev/config/#resolve-alias
+  resolve: {
+    alias: {
+      '@': join(__dirname, "src"),
+    }
+  },
+
   //  vite2打包出现警告，"@charset" must be the first, https://www.zhihu.com/question/498190531/answer/2219095376
   css: {
     postcss: {

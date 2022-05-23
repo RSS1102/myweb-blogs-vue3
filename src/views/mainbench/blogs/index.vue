@@ -60,9 +60,9 @@
 
 <script lang='ts'  setup>
 import { nextTick, ref, toRaw, PropType, reactive } from "vue";
-import { getBlogMenu, getBlogContent } from "../../../http/apis/blogsmenu";
+import { getBlogMenu, getBlogContent } from "@/http/apis/blogsmenu";
 import { Timer } from "@element-plus/icons-vue";
-import { timeFormatter } from "../../../util/tools";
+import { timeFormatter } from "@/util/tools";
 
 import { useRoute, useRouter } from "vue-router";
 

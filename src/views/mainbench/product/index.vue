@@ -3,7 +3,7 @@
     <div class="slogan-first">Show Me Code</div>
   </div>
   <div class="page">
-    <productbox
+    <product-box
       v-for="item in theProducts"
       :name="item.name"
       :topics="item.ware_topicsTags"
@@ -15,7 +15,7 @@
       :url="item.url"
       :languages="item.ware_languages"
       class="productbox"
-    ></productbox>
+    ></product-box>
   </div>
 </template>
 
@@ -25,11 +25,10 @@
  */
 import qs from 'qs';
 import { nextTick, ref } from 'vue';
-import productbox from './productBox.vue';
-import { getProduct } from '../../../http/apis/probuct'
+import productBox from './productBox.vue';
+import { getProduct } from '@/http/apis/probuct'
 import { ElLoading } from 'element-plus'
-import { timeFormatter } from '../../../util/tools';
-
+import { timeFormatter } from '@/util/tools';
 
 let theProducts = ref()
 getProduct().then((res: any) => {

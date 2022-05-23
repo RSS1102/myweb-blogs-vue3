@@ -12,12 +12,20 @@
     "lib": [
       "esnext",
       "dom"
-    ]
+    ],
+    //添加快捷路径@
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
-, "src/http/api.js"  ]
+    "src/**/*.vue",
+    "src/http/api.js"
+  ]
 }
