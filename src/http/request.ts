@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import router from '../router/index';
-
+const __ENV__ = import.meta.env.VITE__URL as string;
 const conifg = {
   // 基础url前缀
-  baseURL: '/api',
+  baseURL: __ENV__,
   // 请求头信息
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
 

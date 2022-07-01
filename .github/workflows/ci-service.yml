@@ -2,7 +2,7 @@ name: Build app and deploy to Tencent
 on:
   pull_request:
     branches:
-      - main
+      - release
 jobs:
   # 任务ID
   build:

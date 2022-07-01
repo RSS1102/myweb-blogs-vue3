@@ -3,8 +3,9 @@
     "version": "0.0.0",
     "license": "ISC",
     "scripts": {
-        "build": "vue-tsc --noEmit && vite build",
-        "dev": "vite --host",
+        "dev": "vite --mode development",
+        "build": "vue-tsc --noEmit && vite build   --mode production",
+        "build:gitpages": "vue-tsc --noEmit && vite build     --mode gitpages",
         "preview": "vite preview"
     },
     "dependencies": {
