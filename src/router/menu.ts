@@ -2,7 +2,7 @@ const Menurouter = [
   // home
   {
     path: '/home/index',
-    Name: 'home',
+    name: 'home',
     component: () => import('../views/mainbench/home/index.vue'),
   },
   // blogs
@@ -12,25 +12,25 @@ const Menurouter = [
   },
   {
     path: '/blogs/index/:id',
-    Name: 'blogs',
+    name: 'blogs',
     component: () => import('../views/mainbench/blogs/index.vue'),
   },
   //product
   {
     path: '/product/index',
-    Name: 'product',
+    name: 'product',
     component: () => import('../views/mainbench/product/index.vue'),
   },
   //communication
   {
     path: '/communication/index',
-    Name: 'communication',
+    name: 'communication',
     component: () => import('../views/mainbench/communication/index.vue'),
   },
   //demo
   {
     path: '/demo/index',
-    Name: 'demo',
+    name: 'demo',
     component: () => import('../views/mainbench/demo/index.vue'),
   },
 

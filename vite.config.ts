@@ -39,7 +39,8 @@ export default defineConfig(({ command, mode }) => {
       https: true,
       proxy: {
         '/api': {
-          target: 'https://localhost:3003/api/',
+          // target: 'https://localhost:3003/api/',
+          target: `https://localhost:${env.VITE_PORT}/api/`,
           changeOrigin: true,
           secure: false,//不检测https的合法性
           rewrite: path => path.replace(/^\/api/, ''),
