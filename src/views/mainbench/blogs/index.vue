@@ -2,8 +2,7 @@
   <div class="nav-bar" v-loading="loading">
     <div class="side-nav-bar">
       <div class="side-nav-bar-title" @click="goIndex()">
-        <img />
-        <div class="blog-logo">RSS1102</div>
+    
       </div>
       <div class="menu">
         <el-menu :default-active="defaultActive" v-for="(titleItem, nav) in BlogMenu">
@@ -23,7 +22,9 @@
       </div>
     </div>
     <div class="blogs-class">
-      <div v-if="!blogsPage.blogTitle" class="blogs-main">kong</div>
+      <div v-if="!blogsPage.blogTitle" class="blogs-main">
+        <Bulletin></Bulletin>
+      </div>
       <div class="blogs-main" v-else>
         <div class="blog-nav">
           <span class="nav-title">来自集合：</span>
@@ -48,7 +49,7 @@
       </div>
       <el-divider />
       <div class="blog-footer">
-        <span class="blog-author">RSS1102</span>
+        <!-- <span class="blog-author">RSS1102</span> -->
         <span v-if="blogsPage.updatedAt !== blogsPage.createdAt" class="blog-updated">
           <span>{{ blogsPage.updatedAt }}</span>
           <span> 进行过更改。</span>
@@ -63,9 +64,8 @@ import { nextTick, ref, toRaw, PropType, reactive } from "vue";
 import { getBlogMenu, getBlogContent } from "@/http/apis/blogsmenu";
 import { Timer } from "@element-plus/icons-vue";
 import { timeFormatter } from "@/util/tools";
-
 import { useRoute, useRouter } from "vue-router";
-
+import Bulletin from "./bulletin.vue";
 let BlogMenu = ref();
 let defaultActive = ref("0");
 let blogsPage = reactive({
@@ -113,19 +113,7 @@ const goIndex = () => {
   router.push(`/blogs/index/0`);
 };
 </script>
-
 <style lang='less' scoped>
-.logo {
-  margin: 20px 30px;
-  font-family: "fontone";
-  height: 20%;
-  font-weight: bolder;
-  background: linear-gradient(90deg, #2112a8 5%, #f0400b 80%, #d64e24 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .nav-bar {
   display: flex;
   height: 100%;
@@ -140,10 +128,7 @@ const goIndex = () => {
     cursor: pointer;
     text-align: center;
 
-    .blog-logo {
-      font-size: 38px;
-      .logo ();
-    }
+
   }
 
   .menu {
@@ -237,7 +222,6 @@ const goIndex = () => {
       font-weight: bolder;
       margin: 0 20px;
       font-size: 24px;
-      .logo ();
     }
   }
 }

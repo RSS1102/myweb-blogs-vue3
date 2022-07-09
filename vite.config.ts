@@ -46,7 +46,16 @@ export default defineConfig(({ command, mode }) => {
           rewrite: path => path.replace(/^\/api/, ''),
         },
       },
+    },
+    build: {
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        }
+      }
     }
+
   }
 })
 

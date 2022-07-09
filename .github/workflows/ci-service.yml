@@ -16,8 +16,8 @@ jobs:
       # 步骤执行指令
       - name: npm install
         run: npm install
-      - name: npm run build
-        run: npm run build
+      - name: npm run build:production
+        run: npm run build:production
       - name: tar压缩  tar -c [options] [<file>
         run: tar -czvf  dist.tar.gz  ./dist/
       # 命名这个任务为发布Deploy
