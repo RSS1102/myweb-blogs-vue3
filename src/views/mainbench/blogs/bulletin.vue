@@ -5,13 +5,15 @@
         <p class="blog-msg">写下这些博客的初衷是为了记录自己的学习记录，另一方面也是想和大家一起交流学习经验，共同进步，如果您发现到了博客内有什么错误欢迎及时留言指正。谢谢。</p>
         <div class="blog-effect">
             <div class="my-referrals">
-                <div style="margin: 10px 5px"><span class="box-title">我的推荐:</span></div>
+                <div style="margin: 10px 5px"><span class="box-title">我的推荐</span></div>
+                <el-divider />
                 <div class="referrals-box">
-                    <div class="referrals-box-item" v-for="item in 4">我的推荐1</div>
+                    <div class="referrals-box-item" v-for="item in 4">暂无推荐</div>
                 </div>
             </div>
             <div class="blogs-rank">
-                <div style="margin: 10px 5px"><span class="box-title">今日热度排行</span></div>
+                <div style="margin: 10px 5px"><span class="box-title">热度排行</span></div>
+                <el-divider />
                 <div class="rank-box">
                     <div class="rank-box-item" v-for="item in rankList">{{ item }}</div>
                 </div>
@@ -65,16 +67,16 @@ rankList = [11111111, 222222222, 33333333333, 44444444444, 55555555555,]
         }
 
         .referrals-box-item {
-            background-color: red;
+            background-color: rgb(227, 227, 227);
             width: 40%;
             height: 100px;
-            margin: 5%;
+            margin: 10px 5%;
             border-radius: 5px;
         }
     }
 
     .blogs-rank {
-        margin: 0 10px;
+        margin: 0 20px;
     }
 
 }

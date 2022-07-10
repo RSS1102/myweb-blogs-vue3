@@ -2,7 +2,7 @@
   <div class="nav-bar" v-loading="loading">
     <div class="side-nav-bar">
       <div class="side-nav-bar-title" @click="goIndex()">
-    
+        <p class="blog-logo"><span class="the-logo ">RSS1102</span></p>
       </div>
       <div class="menu">
         <el-menu :default-active="defaultActive" v-for="(titleItem, nav) in BlogMenu">
@@ -114,6 +114,8 @@ const goIndex = () => {
 };
 </script>
 <style lang='less' scoped>
+@import url('@/assets/css/blog.less');
+
 .nav-bar {
   display: flex;
   height: 100%;
