@@ -30,10 +30,11 @@ const router = createRouter({
 router.beforeEach((to, from) => {
     console.log("to", to)
     console.log("from", from)
+    let blogsKey = to.params?.id === '0' ? null : parseInt(to.params.id as string);
     let pvParams = {
         name: to.name as string,
         path: to.path,
-        paramsKey: to.params?.id as string,
+        blogsKey: blogsKey as number,
         vitstDate: new Date(),
     }
     console.log(pvParams)

@@ -47,6 +47,7 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
+    // https://vitejs.dev/config/#build-terseroptions
     build: {
       minify: 'terser', 
       terserOptions: {

@@ -66,17 +66,27 @@ import { Timer } from "@element-plus/icons-vue";
 import { timeFormatter } from "@/util/tools";
 import { useRoute, useRouter } from "vue-router";
 import Bulletin from "./bulletin.vue";
+interface BlogsPageType {
+  id: number;
+  articleShow: boolean;
+  blogContent: string;
+  blogNav: string;
+  blogTitle: string;
+  createdAt: string;
+  updatedAt: string;
+  visitedNum: number;
+}
 let BlogMenu = ref();
 let defaultActive = ref("0");
-let blogsPage = reactive({
-  articleShow: 0,
-  blogContent: "",
-  blogNav: "",
-  blogTitle: "",
-  createdAt: "",
+let blogsPage: BlogsPageType = reactive({
   id: 0,
-  updatedAt: "",
-  visitedNum: 0,
+  articleShow: true,
+  blogContent: '',
+  blogNav: '',
+  blogTitle: '',
+  createdAt: '',
+  updatedAt: '',
+  visitedNum: 0
 });
 let loading = ref(true);
 
@@ -90,10 +100,28 @@ getBlogMenu().then((res) => {
 const route = useRoute();
 // 设置:id
 const router = useRouter();
+interface monitorlogs {
+  blogsKey: number;
+}
+interface BlogContentType<T> {
+  id: number;
+  articleShow: boolean;
+  blogContent: string;
+  blogNav: string;
+  blogTitle: string;
+  createdAt: string;
+  updatedAt: string;
+  monitorlogs: Array<T>;
+}
+
 const onclickNav = (id: number): void => {
+  if (id === 0) {
+    blogsPage.blogTitle = "";
+    return;
+  }
   router.push(`/blogs/index/${id}`);
   let data = { id: id };
-  getBlogContent(data).then((res: any) => {
+  getBlogContent(data).then((res: BlogContentType<monitorlogs>) => {
     blogsPage.articleShow = res.articleShow;
     blogsPage.blogContent = res.blogContent;
     blogsPage.blogNav = res.blogNav;
@@ -101,15 +129,15 @@ const onclickNav = (id: number): void => {
     blogsPage.createdAt = timeFormatter(res.createdAt);
     blogsPage.id = res.id;
     blogsPage.updatedAt = timeFormatter(res.updatedAt);
-    blogsPage.visitedNum = res.visitedNum;
+    blogsPage.visitedNum = res.monitorlogs.length;
+    console.log(timeFormatter(res.createdAt), timeFormatter(res.updatedAt));
   });
   defaultActive.value = id.toString();
 };
 onclickNav(parseInt(route.params.id as string));
-// 显示简介\
-console.log(route.params.id)
+// 首页
 const goIndex = () => {
-  blogsPage.blogTitle = "";
+  blogsPage.blogTitle = ''
   router.push(`/blogs/index/0`);
 };
 </script>
@@ -206,7 +234,7 @@ const goIndex = () => {
   }
 
   .blogs-main {
-    min-height: 75vh;
+    min-height: 80vh;
   }
 
   .blog-footer {
